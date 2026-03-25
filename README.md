@@ -41,4 +41,4 @@ Every article follows a consistent format:
 
 ## Outcome
 
-A living knowledge base that grows with experience. This format mirrors the knowledge management systems used in real IT support environments (ServiceNow KB, Confluence, Freshservice). The ITIL 4 framing demonstrates that support knowledge isn't just technical — it's process-aware.
+A living knowledge base that grows with experience. This format mirrors the knowledge management systems used in real IT support environments (ServiceNow KB, Confluence, Freshservice). The ITIL 4 framing demonstrates that support knowledge isn't just technical - it's process-aware.
