@@ -122,4 +122,24 @@ wrong diagnostic path.
 
 ---
 
+### Security (3 articles)
+
+| Article ID | Title | Cert Alignment |
+|-----------|-------|---------------|
+| SEC-001 | [Ransomware: Initial Triage for L1](security/sec-001-ransomware-initial-triage.md) | Sec+ |
+| SEC-002 | [Insider Threat: Behavioural and Technical Indicators](security/sec-002-insider-threat-indicators.md) | Sec+ |
+| SEC-003 | [SSL/TLS Certificate Chain Errors in Production](security/sec-003-ssl-tls-certificate-chain-errors.md) | Sec+, AZ-104 |
+
+**What is unique about these articles:**
+SEC-001 opens with the three rules before any other action - specifically Rule 1
+(do not shut down) and the technical reasons why shutting down destroys forensic
+evidence and can cause permanent data loss in some ransomware strains. SEC-002
+exists in an L1 knowledge base because insider threats are first noticed by L1
+engineers, not by automated alerts - this article defines exactly what to observe,
+document, and escalate without making the mistake of confronting the subject.
+SEC-003 explains why the same certificate works in Chrome but fails in curl -
+the browser certificate cache distinction that makes chain errors so confusing.
+
+---
+
 
