@@ -87,3 +87,18 @@ exactly which grant control failed and what the correct L1 path is for each one.
 | AZ-003 | [Azure Backup Job Failure: Diagnosis and Recovery](azure/az-003-azure-backup-job-failure-guide.md) | AZ-104 |
 | AZ-004 | [Azure Cost Spike Investigation Checklist](azure/az-004-cost-spike-investigation-checklist.md) | AZ-104, AZ-900 |
 
+
+**What is unique about these articles:**
+AZ-001 uses a decision tree instead of a linear procedure because VM boot failures
+have four distinct root causes requiring completely different paths - a linear
+procedure wastes time applying steps for the wrong cause. AZ-002 documents the
+full token type taxonomy and lifetimes, explaining why users get prompted to
+re-authenticate (refresh token expiry) vs why applications break silently
+(access token expiry handled automatically). AZ-003 maps every common Azure Backup
+error code to its cause and fix, including the VSS writer state check that most
+backup troubleshooting guides omit. AZ-004 classifies cost spikes into four
+categories before investigation begins, reducing investigation time by routing
+directly to the relevant Azure CLI commands.
+
+---
+
