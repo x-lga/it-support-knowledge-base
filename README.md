@@ -184,5 +184,30 @@ responsible.
 
 ---
 
+## Certification Coverage
+
+| Cert Domain | Articles Covering It |
+|-------------|-------------------|
+| CompTIA A+ - Operating Systems | WIN-001, WIN-002, WIN-003, WIN-005, LNX-001, LNX-002, LNX-003 |
+| CompTIA A+ - Networking | NET-003, LNX-003 |
+| CompTIA A+ - Security | WIN-003, WIN-004, SEC-001 |
+| CompTIA Network+ - Infrastructure | NET-001, NET-002, NET-003 |
+| CompTIA Network+ - Network Operations | NET-002, M365-002, LNX-003 |
+| CompTIA Network+ - Security | NET-001, SEC-003 |
+| CompTIA Security+ - Threats and Vulnerabilities | SEC-001, SEC-002 |
+| CompTIA Security+ - Identity and Access Management | M365-004, AZ-002 |
+| CompTIA Security+ - PKI and Cryptography | WIN-004, SEC-003, WIN-003 |
+| Microsoft AZ-900 - Cloud Concepts | M365-001, M365-002, M365-003, AZ-004 |
+| Microsoft AZ-104 - Identity | M365-004, AZ-002 |
+| Microsoft AZ-104 - Compute | AZ-001 |
+| Microsoft AZ-104 - Storage | AZ-003, AZ-004 |
+| Microsoft AZ-104 - Monitoring | AZ-003, AZ-004 |
+| ITIL 4 - Incident Management | All articles (P1/P2/P3 classification, escalation packages) |
+| ITIL 4 - Problem Management | templates/known-error-record-template.md |
+| ITIL 4 - Knowledge Management | templates/knowledge-article-template.md, meta/ |
+| ITIL 4 - Continual Improvement | templates/post-incident-review-template.md |
+
+---
+
 
 
