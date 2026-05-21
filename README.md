@@ -28,3 +28,16 @@ means when it does not match the healthy baseline.
 
 ---
 
+## Repository Contents
+
+### Windows (5 articles)
+
+| Article ID | Title | Cert Alignment |
+|-----------|-------|---------------|
+| WIN-001 | [User Profile Corruption: Diagnosis and Recovery](windows/win-001-profile-corruption-diagnosis.md) | A+ |
+| WIN-002 | [WMI Repository Corruption: Diagnosis and Rebuild](windows/win-002-wmi-repository-rebuild.md) | A+ |
+| WIN-003 | [BitLocker Recovery: Retrieval, Validation, and Post-Recovery](windows/win-003-bitlocker-recovery-procedure.md) | A+, Sec+ |
+| WIN-004 | [Windows Certificate Store: Diagnosis and Repair](windows/win-004-certificate-store-troubleshooting.md) | A+, Sec+ |
+| WIN-005 | [Shadow Copy and VSS: Recovery Procedures and Failures](windows/win-005-shadow-copy-and-vss-recovery.md) | A+ |
+
+
