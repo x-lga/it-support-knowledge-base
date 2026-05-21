@@ -54,4 +54,13 @@ against, including the specific ransomware command that deletes them.
 
 ---
 
+### Microsoft 365 (4 articles)
+
+| Article ID | Title | Cert Alignment |
+|-----------|-------|---------------|
+| M365-001 | [Autodiscover Failure: Why Outlook Cannot Find the Mailbox](microsoft-365/m365-001-autodiscover-failure-diagnosis.md) | A+, AZ-900 |
+| M365-002 | [Teams Media Quality Investigation](microsoft-365/m365-002-teams-media-quality-investigation.md) | Net+, AZ-900 |
+| M365-003 | [SharePoint Permission Inheritance Breaks](microsoft-365/m365-003-sharepoint-permission-inheritance.md) | AZ-900 |
+| M365-004 | [Conditional Access Sign-In Failure Diagnosis](microsoft-365/m365-004-conditional-access-sign-in-failure.md) | Sec+, AZ-104 |
+
 
