@@ -175,6 +175,14 @@ responsible.
 
 ---
 
+### Meta (2 documents)
+
+| Document | Purpose |
+|---------|---------|
+| [how-to-contribute.md](meta/how-to-contribute.md) | Step-by-step contribution guide including article ID naming convention, branch workflow, pull request description requirements, and what not to contribute |
+| [article-quality-standards.md](meta/article-quality-standards.md) | Eight quality standards every article must meet before publication, with failing and passing examples for each standard |
+
+---
 
 
 
