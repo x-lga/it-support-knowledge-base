@@ -77,3 +77,13 @@ is explicit that password reset and MFA reset do not fix CA blocks and documents
 exactly which grant control failed and what the correct L1 path is for each one.
 
 ---
+
+### Azure (4 articles)
+
+| Article ID | Title | Cert Alignment |
+|-----------|-------|---------------|
+| AZ-001 | [Azure VM Boot Failure: Complete Decision Tree](azure/az-001-vm-boot-failure-decision-tree.md) | AZ-104 |
+| AZ-002 | [Entra ID Token Expiry and App Consent Failures](azure/az-002-entra-id-token-and-consent-issues.md) | AZ-104, Sec+ |
+| AZ-003 | [Azure Backup Job Failure: Diagnosis and Recovery](azure/az-003-azure-backup-job-failure-guide.md) | AZ-104 |
+| AZ-004 | [Azure Cost Spike Investigation Checklist](azure/az-004-cost-spike-investigation-checklist.md) | AZ-104, AZ-900 |
+
