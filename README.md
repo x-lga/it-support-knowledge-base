@@ -209,5 +209,20 @@ responsible.
 
 ---
 
+## Role Coverage
+
+| Role | Most Relevant Articles |
+|------|----------------------|
+| IT Support L1/L2 | WIN-001–005, NET-003, SEC-001, SEC-002, M365-001–004 |
+| NOC Engineer | NET-001, NET-002, LNX-003, AZ-001, AZ-003 |
+| SOC Analyst | SEC-001, SEC-002, SEC-003, M365-004, AZ-002 |
+| Azure Cloud Support Engineer | AZ-001–004, M365-004, SEC-003 |
+| Systems Administrator | WIN-002–005, LNX-001–003, NET-001 |
+| MSP Engineer | All articles — breadth across all domains is the MSP requirement |
+| Junior Cloud Administrator | AZ-001–004, M365-001–004, SEC-003 |
+
+---
+
+
 
 
