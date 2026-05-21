@@ -142,4 +142,28 @@ the browser certificate cache distinction that makes chain errors so confusing.
 
 ---
 
+### Linux (3 articles)
+
+| Article ID | Title | Cert Alignment |
+|-----------|-------|---------------|
+| LNX-001 | [Filesystem Corruption: Recovery Without Data Loss](linux/lnx-001-filesystem-corruption-recovery.md) | A+ |
+| LNX-002 | [systemd Service Dependency Failures](linux/lnx-002-systemd-service-dependency-failures.md) | A+ |
+| LNX-003 | [High iowait Diagnosis: Finding What Is Hammering the Disk](linux/lnx-003-high-iowait-diagnosis.md) | A+, Net+ |
+
+**What is unique about these articles:**
+LNX-001 opens with the critical warning to check SMART data before running fsck -
+because running fsck on a failing disk can cause more data loss than the original
+corruption. It also covers btrfs corruption as an edge case specifically because
+running ext4 fsck on btrfs makes things dramatically worse, which is not obvious.
+LNX-002 documents the difference between the four dependency types (Requires,
+Wants, After, BindsTo) and the `network.target` vs `network-online.target`
+distinction that causes "works manually, fails on boot" issues - the most common
+and least understood systemd problem. LNX-003 explains what iowait actually
+measures (CPU time wasted waiting for disk, not disk utilisation) and provides
+the iotop + pidstat + lsof combination for identifying exactly which process is
+responsible.
+
+---
+
+
 
