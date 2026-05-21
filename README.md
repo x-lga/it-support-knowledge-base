@@ -102,3 +102,24 @@ directly to the relevant Azure CLI commands.
 
 ---
 
+### Networking (3 articles)
+
+| Article ID | Title | Cert Alignment |
+|-----------|-------|---------------|
+| NET-001 | [802.1X Authentication Failures: Wired and Wireless](networking/net-001-802-1x-authentication-failure.md) | Net+, Sec+ |
+| NET-002 | [Asymmetric Routing: Diagnosis and Impact](networking/net-002-asymmetric-routing-diagnosis.md) | Net+ |
+| NET-003 | [DHCP Scope Exhaustion: Diagnosis and Emergency Response](networking/net-003-dhcp-exhaustion-and-scope-management.md) | Net+, A+ |
+
+**What is unique about these articles:**
+NET-001 explains why 802.1X failures are invisible (the device connects physically
+but has no IP) and documents all NPS Event 6273 reason codes - the information
+that turns a 45-minute investigation into a 5-minute lookup. NET-002 covers
+asymmetric routing as an Azure hybrid environment problem, including the UDR
+diagnostic commands and why a missing UDR on the return-path subnet is the most
+common cause in Azure deployments specifically. NET-003 distinguishes DHCP
+exhaustion from DHCP server failure before any investigation, preventing the
+wrong diagnostic path.
+
+---
+
+
