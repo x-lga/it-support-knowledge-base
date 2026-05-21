@@ -64,3 +64,16 @@ against, including the specific ransomware command that deletes them.
 | M365-004 | [Conditional Access Sign-In Failure Diagnosis](microsoft-365/m365-004-conditional-access-sign-in-failure.md) | Sec+, AZ-104 |
 
 
+**What is unique about these articles:**
+M365-001 documents the exact Autodiscover lookup order and why SCP (Active
+Directory Service Connection Point) causes hybrid migrations to break for
+domain-joined machines even after mailboxes move to the cloud. M365-002 provides
+the Call Analytics portal path and the exact Microsoft quality thresholds for
+packet loss, jitter, and latency - plus the VPN split tunnelling tracert test
+that identifies hairpinning in under 2 minutes. M365-003 explains inheritance
+breaking as the root cause of 80% of SharePoint access tickets and provides PnP
+PowerShell commands that show exactly where inheritance broke and why. M365-004
+is explicit that password reset and MFA reset do not fix CA blocks and documents
+exactly which grant control failed and what the correct L1 path is for each one.
+
+---
