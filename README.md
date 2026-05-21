@@ -223,6 +223,29 @@ responsible.
 
 ---
 
+## How to Use This Knowledge Base
+
+**During an active incident:**
+1. Search by symptom - use the article titles, which are written as problem
+   statements rather than technology names
+2. Check the category folder that matches the affected system
+3. Read the introductory section of the article - it confirms whether you are
+   in the right place before you start the steps
+4. Follow the diagnostic steps in order - do not skip ahead to the fix
+
+**During onboarding:**
+Read the articles in the domain you will be supporting first. Every article is
+designed to take about 15 minutes to read. Reading 5 articles per day for a week
+covers every article in this knowledge base and provides a foundation that
+typically takes 2–3 months of ticket-based learning to accumulate organically.
+
+**After resolving a ticket:**
+Check whether the ticket could have been resolved faster with a knowledge base
+article that does not exist yet. If yes: write it. See `meta/how-to-contribute.md`.
+
+
+---
+
 
 
 
