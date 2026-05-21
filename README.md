@@ -41,3 +41,17 @@ means when it does not match the healthy baseline.
 | WIN-005 | [Shadow Copy and VSS: Recovery Procedures and Failures](windows/win-005-shadow-copy-and-vss-recovery.md) | A+ |
 
 
+**What is unique about these articles:**
+WIN-001 documents the `.bak` registry key duplicate - the most common profile
+corruption pattern - and why copying the entire profile perpetuates corruption.
+WIN-002 documents the critical distinction between WMI permission failures (DCOM)
+and WMI repository corruption, because they present identically but require
+completely different fixes. WIN-003 covers why recovery mode is not a sign of
+attack and documents every common legitimate trigger with the specific TPM PCR
+event IDs. WIN-004 covers private key permission failures - the least documented
+certificate issue. WIN-005 is explicit about what shadow copies cannot protect
+against, including the specific ransomware command that deletes them.
+
+---
+
+
