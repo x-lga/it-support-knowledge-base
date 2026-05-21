@@ -246,6 +246,28 @@ article that does not exist yet. If yes: write it. See `meta/how-to-contribute.m
 
 ---
 
+## Impact
+
+Support organisations fail the same way repeatedly: an engineer spends 45 minutes
+on a ticket, closes it, and the knowledge lives only in their head. The next time
+the same issue appears, the same 45 minutes happens again. Multiply by 5 engineers
+and 50 recurring ticket types and the cumulative cost is enormous.
+
+This knowledge base breaks that cycle for the 19 most common mishandled ticket
+types in Windows, cloud, networking, security, and Linux environments. It is not
+exhaustive - no knowledge base is. It is a foundation: a proof that institutional
+knowledge can be captured, maintained, and made available to every engineer who
+needs it, at any hour, without waiting for a senior colleague to be available.
+
+The templates ensure that every future ticket resolution can contribute to the
+same foundation. The quality standards ensure that contributions are genuinely
+useful rather than performative. The contribution process ensures that the
+knowledge base grows from real incidents rather than from assumptions about
+what engineers need.
+
+
+---
+
 
 
 
