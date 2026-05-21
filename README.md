@@ -165,5 +165,16 @@ responsible.
 
 ---
 
+### Templates (3 templates)
+
+| Template | Purpose |
+|---------|---------|
+| [knowledge-article-template.md](templates/knowledge-article-template.md) | Template for all new knowledge articles with inline instructions for every section |
+| [known-error-record-template.md](templates/known-error-record-template.md) | Template for ITIL 4 Known Error Records - problems with identified root cause and no permanent fix |
+| [post-incident-review-template.md](templates/post-incident-review-template.md) | Full PIR template with timeline table, root cause analysis, contributing factors, response assessment, action items, and knowledge base update triggers |
+
+---
+
+
 
 
