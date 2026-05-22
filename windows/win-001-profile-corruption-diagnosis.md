@@ -25,3 +25,17 @@ A corrupted profile typically manifests as one of three presentations:
    the sign-in" error even with correct credentials
 
 ---
+
+## Distinguishing Profile Corruption from Other Issues
+
+Before assuming profile corruption, rule these out first:
+
+| Symptom | Possible Cause | Quick Check |
+|---------|---------------|------------|
+| "Temporary profile" message | Profile corruption OR disk full | Check C: free space first — profile creation fails silently if disk is full |
+| Blank desktop after login | Profile corruption OR GPO issue | Does another user on same machine get a blank desktop? If yes: GPO, not profile |
+| Login fails entirely | Profile OR password OR AD | Does the user log in successfully on a different machine? If yes: local profile issue |
+| Desktop loads but apps crash | Profile corruption OR roaming profile conflict | Is roaming profile configured? Conflicts cause app settings corruption |
+
+---
+
