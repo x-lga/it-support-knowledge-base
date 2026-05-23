@@ -210,3 +210,12 @@ cannot load. Check whether ProfileImagePath matches an accessible drive letter b
 concluding the profile file itself is corrupt.
 
 ---
+
+## Related Articles
+
+- WIN-002: WMI Repository Rebuild (profile corruption can sometimes present similarly to WMI failures)
+- WIN-005: Shadow Copy and VSS Recovery (for recovering previous versions of NTUSER.DAT)
+
+
+---
+
