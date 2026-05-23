@@ -39,3 +39,30 @@ Before assuming profile corruption, rule these out first:
 
 ---
 
+## Step 1 — Identify Which Profile Is Loading
+
+```powershell
+# Run on the affected machine as Administrator
+# This shows ALL profiles on the machine and their paths
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\*" |
+    Select-Object PSChildName, ProfileImagePath, State |
+    Format-Table -AutoSize
+
+# Profile State values:
+# 0  = Profile loaded and healthy
+# 1  = Profile was loaded temporarily (temporary profile was created)
+# 4  = Profile corrupt — do not delete yet
+# 8  = Profile requires mandatory sync
+# 256 = Profile being created (transient)
+# 516 = Profile loaded but with errors
+```
+
+The PSChildName column shows the user's SID. Cross-reference with AD:
+```powershell
+# Convert SID to username
+$SID = "S-1-5-21-[numbers]"
+Get-ADUser -Filter { SID -eq $SID } | Select-Object Name, SamAccountName
+```
+
+---
+
