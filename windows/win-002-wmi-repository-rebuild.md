@@ -130,4 +130,32 @@ Write-Host "REBOOT REQUIRED before verifying agent functionality." -ForegroundCo
 
 ---
 
+## Step 4 — Post-Rebuild Verification and Agent Recovery
+
+```powershell
+# Reboot first, then run these checks
+# Verify WMI is healthy
+winmgmt /verifyrepository
+Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version
+
+# Check which agents need re-registration
+# Microsoft Defender for Endpoint
+Get-Service -Name "Sense" | Select-Object Status
+# If stopped: the Defender MSSense service needs repair
+# msiexec /fa "C:\Program Files\Windows Defender Advanced Threat Protection\MsSense.exe"
+
+# SCCM/ConfigMgr agent
+Get-Service -Name "CcmExec" | Select-Object Status
+# If stopped or missing: reinstall SCCM client
+# ccmsetup.exe /forceinstall
+
+# Check WMI event log for remaining errors
+Get-WinEvent -LogName "Microsoft-Windows-WMI-Activity/Operational" -MaxEvents 20 |
+    Where-Object { $_.LevelDisplayName -in @("Error", "Warning") } |
+    Select-Object TimeCreated, LevelDisplayName, Message |
+    Format-List
+```
+
+---
+
 
