@@ -137,3 +137,54 @@ if (Test-Path $BakPath) {
 
 ---
 
+## Step 4 — Create a New Profile and Migrate Data
+
+Use this path only when Step 3 fails or when the profile data itself is corrupt:
+
+```powershell
+# Step A: Create a new temporary admin account to log in with
+# (Cannot migrate profile data while logged in as the affected user)
+$TempPass = ConvertTo-SecureString "TempAdmin@2026!" -AsPlainText -Force
+New-LocalUser -Name "TempMigration" -Password $TempPass -FullName "Temp Migration"
+Add-LocalGroupMember -Group "Administrators" -Member "TempMigration"
+
+# Step B: Log off all sessions of the affected user
+# (Profile folders cannot be copied while files are in use)
+query user | Select-String $Username
+# If sessions exist: logoff [session ID]
+
+# Step C: After logging in as TempMigration, copy the critical data
+# Do NOT copy the entire profile — this copies the corruption with it
+# Copy only the user data directories
+$SourceProfile = "C:\Users\jsmith"
+$TempBackup    = "C:\ProfileBackup\jsmith"
+New-Item -ItemType Directory -Path $TempBackup -Force
+
+$DataFolders = @("Desktop", "Documents", "Downloads", "Pictures",
+                  "Videos", "Music", "AppData\Roaming\Microsoft\Outlook",
+                  "AppData\Roaming\Microsoft\Signatures",
+                  "AppData\Local\Microsoft\Outlook\*.ost")
+
+foreach ($Folder in $DataFolders) {
+    $Source = Join-Path $SourceProfile $Folder
+    $Dest   = Join-Path $TempBackup   $Folder
+    if (Test-Path $Source) {
+        Copy-Item -Path $Source -Destination $Dest -Recurse -Force -ErrorAction SilentlyContinue
+        Write-Host "Copied: $Folder"
+    }
+}
+Write-Host "Data backup complete: $TempBackup"
+
+# Step D: Delete the corrupted profile entry from the registry
+# (This forces Windows to create a fresh profile on next login)
+Remove-Item -Path $RegPath -Recurse -Confirm:$false
+Write-Host "Registry profile entry removed for $UserSID"
+# Do NOT delete C:\Users\jsmith yet — keep until the new profile is verified
+
+# Step E: Have the user log in — Windows creates a fresh profile
+# Step F: Copy the backed-up data into the new profile
+# Step G: After user confirms everything is working — delete C:\Users\jsmith.OLD
+```
+
+---
+
