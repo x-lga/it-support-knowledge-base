@@ -188,3 +188,12 @@ Write-Host "Registry profile entry removed for $UserSID"
 
 ---
 
+## Known Edge Cases
+
+**Edge case 1 — Roaming profile conflicts:**
+If the user has a roaming profile configured (GPMC → User Configuration → Folder
+Redirection), the local profile may look corrupt but the issue is a sync conflict
+between the local cache and the server copy. Check the Event Log for
+`User Profile Service` source errors. Source `Event ID 1500` with error code
+`0x80070057` = roaming profile path invalid or inaccessible.
+
