@@ -88,7 +88,7 @@ winmgmt /verifyrepository
 
 ---
 
-## Step 3 — Full Repository Rebuild (When Step 2 Fails)
+## Step 3 - Full Repository Rebuild (When Step 2 Fails)
 
 ```powershell
 # WARNING: This removes all third-party WMI provider registrations
@@ -130,7 +130,7 @@ Write-Host "REBOOT REQUIRED before verifying agent functionality." -ForegroundCo
 
 ---
 
-## Step 4 — Post-Rebuild Verification and Agent Recovery
+## Step 4 - Post-Rebuild Verification and Agent Recovery
 
 ```powershell
 # Reboot first, then run these checks
@@ -169,7 +169,7 @@ Windows builds.
 
 
 **Permission-based WMI failures (not corruption):**
-WMI "access denied" errors on remote queries are frequently not corruption — they
+WMI "access denied" errors on remote queries are frequently not corruption - they
 are DCOM permission issues. Check via Component Services (dcomcnfg.exe) whether
 the WMI service has launch and activation permissions for the querying account.
 This is a different problem than repository corruption.
