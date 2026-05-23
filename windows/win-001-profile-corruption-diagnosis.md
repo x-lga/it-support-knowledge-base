@@ -203,3 +203,10 @@ the profile service from loading it. Check whether the issue correlates with AV
 signature updates. Temporary workaround: exclude NTUSER.DAT from on-access scanning
 (must be approved by security team before implementing).
 
+**Edge case 3 — Profile on a different drive:**
+If the ProfileList registry entry has a ProfileImagePath pointing to D:\Users\ but
+the D: drive is unavailable (failed disk, drive letter reassignment), the profile
+cannot load. Check whether ProfileImagePath matches an accessible drive letter before
+concluding the profile file itself is corrupt.
+
+---
