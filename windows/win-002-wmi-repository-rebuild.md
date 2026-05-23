@@ -60,3 +60,31 @@ Get-Service -Name "winmgmt" | Select-Object Name, Status, StartType
 ```
 
 ---
+
+## Step 2 - Attempt In-Place Repair (Less Disruptive)
+
+Always try this before the full rebuild. It works for approximately 60% of cases.
+
+```cmd
+:: Stop all dependent services first
+net stop winmgmt /y
+
+:: Reset the WMI service and re-register core components
+cd /d %systemroot%\system32\wbem
+
+:: Re-register all WMI DLLs
+for /f %s in ('dir /b *.dll') do regsvr32 /s %s
+for /f %s in ('dir /b *.exe') do %s /RegServer
+
+:: Restart WMI
+net start winmgmt
+
+:: Recompile all MOF files (restores WMI class definitions)
+for /f %s in ('dir /b /s *.mof') do mofcomp %s
+
+:: Verify
+winmgmt /verifyrepository
+```
+
+---
+
