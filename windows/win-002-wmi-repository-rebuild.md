@@ -158,4 +158,14 @@ Get-WinEvent -LogName "Microsoft-Windows-WMI-Activity/Operational" -MaxEvents 20
 
 ---
 
+## Known Edge Cases
+
+**WMI corruption after Windows Update:**
+Some Windows cumulative updates corrupt the WMI repository on machines with
+non-standard MOF files from third-party software. Check Windows Update history
+for updates installed in the 24 hours before symptoms appeared. If this is
+recurring, investigate which third-party MOF files are incompatible with recent
+Windows builds.
+
+
 
