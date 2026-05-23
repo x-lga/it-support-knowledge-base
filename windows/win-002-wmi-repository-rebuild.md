@@ -168,4 +168,14 @@ recurring, investigate which third-party MOF files are incompatible with recent
 Windows builds.
 
 
+**Permission-based WMI failures (not corruption):**
+WMI "access denied" errors on remote queries are frequently not corruption — they
+are DCOM permission issues. Check via Component Services (dcomcnfg.exe) whether
+the WMI service has launch and activation permissions for the querying account.
+This is a different problem than repository corruption.
+
+
+---
+
+
 
