@@ -96,3 +96,44 @@ try {
 
 ---
 
+## Step 3 — Attempt Registry Repair (Preferred — Preserves Data)
+
+Many "corrupted" profiles are actually registry hive loading failures that can
+be resolved without touching the user's data:
+
+```powershell
+# Identify the SID for the affected user
+$Username = "jsmith"
+$UserSID = (Get-ADUser $Username).SID.Value
+Write-Host "User SID: $UserSID"
+
+# Check the ProfileList registry entry for this SID
+$RegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\$UserSID"
+Get-ItemProperty $RegPath
+
+# Look for a duplicate entry with .bak suffix — this is the most common corruption cause
+# If both S-1-5-21-xxx-1234 AND S-1-5-21-xxx-1234.bak exist, Windows loaded
+# the .bak (temporary) version instead of the real one
+$BakPath = "$RegPath.bak"
+if (Test-Path $BakPath) {
+    Write-Host "DUPLICATE PROFILE ENTRY FOUND (.bak exists)"
+    Write-Host "This is the most common profile corruption pattern"
+    Write-Host ""
+    Write-Host "Resolution steps:"
+    Write-Host "1. Rename the current key (without .bak) to a safe backup"
+    Write-Host "2. Rename the .bak key to remove the .bak suffix"
+    Write-Host "3. Set the State value to 0 in the corrected key"
+    Write-Host "4. Reboot and test"
+
+    # Manual steps (cannot be fully scripted safely — registry key rename requires regedit):
+    # In regedit.exe:
+    # Navigate to: HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
+    # Right-click S-1-5-21-...-1234 → Rename to S-1-5-21-...-1234.corrupt
+    # Right-click S-1-5-21-...-1234.bak → Rename to S-1-5-21-...-1234
+    # Open the renamed key → Set State = 0
+    # Close regedit, reboot, test login
+}
+```
+
+---
+
