@@ -27,3 +27,36 @@ Common symptoms that actually have WMI as the root cause:
 
 ---
 
+## Step 1 - Verify the Repository is Actually Corrupt
+
+Do not rebuild the WMI repository unless this step confirms corruption.
+A rebuild is disruptive: it removes all third-party WMI providers (antivirus,
+backup agents, monitoring agents) and requires them to be re-registered.
+
+```cmd
+:: Run from an elevated Command Prompt
+winmgmt /verifyrepository
+
+:: Possible responses:
+::   "WMI repository is consistent"  → WMI is not the problem, look elsewhere
+::   "WMI repository is INCONSISTENT"→ Proceed with rebuild
+```
+
+```powershell
+# Additional verification — attempt to query a basic WMI class
+# If this fails, WMI is broken
+try {
+    $OS = Get-CimInstance Win32_OperatingSystem -ErrorAction Stop
+    Write-Host "WMI query succeeded: $($OS.Caption)" -ForegroundColor Green
+} catch {
+    Write-Host "WMI query FAILED: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "Proceed with WMI repository rebuild." -ForegroundColor Yellow
+}
+
+# Check WMI service health
+Get-Service -Name "winmgmt" | Select-Object Name, Status, StartType
+# Expected: Status=Running, StartType=Automatic
+# If Stopped: Start-Service winmgmt first and re-verify
+```
+
+---
