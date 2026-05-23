@@ -66,3 +66,33 @@ Get-ADUser -Filter { SID -eq $SID } | Select-Object Name, SamAccountName
 
 ---
 
+## Step 2 — Examine the Profile for Data Integrity
+
+Before attempting any repair, verify the profile data is not at risk:
+
+```powershell
+# Check the profile folder size and last modified date
+$ProfilePath = "C:\Users\[username]"
+$ProfileInfo = Get-ChildItem $ProfilePath -Recurse -ErrorAction SilentlyContinue |
+    Measure-Object -Property Length -Sum
+Write-Host "Profile size: $([math]::Round($ProfileInfo.Sum / 1MB, 0)) MB"
+Write-Host "Profile folder exists: $(Test-Path $ProfilePath)"
+
+# Check for the NTUSER.DAT file — the core of the profile
+Test-Path "$ProfilePath\NTUSER.DAT"
+# If False: the profile is missing its hive — reconstruction may be needed
+
+# Check NTUSER.DAT is not locked (would indicate the user is currently logged on)
+try {
+    [System.IO.File]::Open("$ProfilePath\NTUSER.DAT",
+        [System.IO.FileMode]::Open,
+        [System.IO.FileAccess]::ReadWrite,
+        [System.IO.FileShare]::None).Close()
+    Write-Host "NTUSER.DAT is NOT locked — user is logged off"
+} catch {
+    Write-Host "NTUSER.DAT is LOCKED — user may still have an active session"
+}
+```
+
+---
+
