@@ -88,3 +88,46 @@ winmgmt /verifyrepository
 
 ---
 
+## Step 3 — Full Repository Rebuild (When Step 2 Fails)
+
+```powershell
+# WARNING: This removes all third-party WMI provider registrations
+# After the rebuild, any agent that uses WMI (AV, SCCM, monitoring) will need
+# to be repaired or reinstalled. Plan accordingly.
+
+# Stop the WMI service and all dependencies
+Stop-Service -Name "winmgmt" -Force
+Stop-Service -Name "iphlpsvc" -Force -ErrorAction SilentlyContinue
+
+# Give services time to release file handles
+Start-Sleep -Seconds 5
+
+# Rename the corrupt repository (do not delete — keep for forensic purposes)
+$RepoPath    = "$env:SystemRoot\System32\wbem\Repository"
+$BackupPath  = "$env:SystemRoot\System32\wbem\Repository.corrupt.$(Get-Date -Format 'yyyyMMdd')"
+Rename-Item -Path $RepoPath -NewName (Split-Path $BackupPath -Leaf)
+Write-Host "Repository renamed to: $BackupPath"
+
+# Restart WMI — Windows will automatically recreate the repository from scratch
+Start-Service -Name "winmgmt"
+
+# Wait for repository initialisation
+Start-Sleep -Seconds 30
+
+# Verify the new repository
+& winmgmt /verifyrepository
+
+# Recompile all MOF files to restore provider registrations
+$WbemPath = "$env:SystemRoot\System32\wbem"
+Get-ChildItem -Path $WbemPath -Filter "*.mof" -Recurse | ForEach-Object {
+    Write-Host "Compiling: $($_.FullName)"
+    & mofcomp.exe $_.FullName 2>$null
+}
+
+Write-Host "WMI repository rebuild complete." -ForegroundColor Green
+Write-Host "REBOOT REQUIRED before verifying agent functionality." -ForegroundColor Yellow
+```
+
+---
+
+
