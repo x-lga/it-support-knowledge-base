@@ -197,3 +197,9 @@ between the local cache and the server copy. Check the Event Log for
 `User Profile Service` source errors. Source `Event ID 1500` with error code
 `0x80070057` = roaming profile path invalid or inaccessible.
 
+**Edge case 2 — AV locking NTUSER.DAT:**
+Some antivirus products scan NTUSER.DAT on login and hold a file lock that prevents
+the profile service from loading it. Check whether the issue correlates with AV
+signature updates. Temporary workaround: exclude NTUSER.DAT from on-access scanning
+(must be approved by security team before implementing).
+
