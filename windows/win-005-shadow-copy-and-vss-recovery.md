@@ -65,3 +65,51 @@ Write-Host "When done: cmd /c 'rmdir $LinkPath'"
 ```
 
 ---
+
+## Step 3 - Diagnose VSS Writer Failures
+
+VSS failures during backup jobs typically come from a VSS writer (a component
+that ensures data consistency during snapshot). When a backup job fails with
+a VSS error, this is the diagnostic path:
+
+```cmd
+:: List all VSS writers and their current state
+vssadmin list writers
+
+:: Healthy output for each writer:
+:: Writer name: 'Microsoft Exchange Writer'
+::   Writer Id: {xxx}
+::   State: [1] Stable
+::   Last error: No error
+::
+:: Unhealthy output:
+::   State: [8] Failed
+::   Last error: Timed out
+```
+
+```powershell
+# Restart VSS writers that are in Failed or Waiting state
+# The writers are tied to Windows services — restarting the service resets the writer
+
+# Common writer → service mappings:
+$WriterServiceMap = @{
+    "System Writer"                   = "CryptSvc"
+    "ASR Writer"                      = "VSS"
+    "COM+ REGDB Writer"               = "VSS"
+    "Registry Writer"                 = "VSS"
+    "Shadow Copy Optimization Writer" = "VSS"
+    "WMI Writer"                      = "Winmgmt"
+    "Microsoft Exchange Writer"       = "MSExchangeIS"
+    "SQL Server Writer"               = "MSSQLSERVER"
+}
+
+# Restart the VSS service itself (resets all built-in writers)
+Restart-Service -Name "VSS" -Force
+Start-Sleep -Seconds 10
+
+# Verify writers recovered
+& vssadmin list writers
+```
+
+---
+
