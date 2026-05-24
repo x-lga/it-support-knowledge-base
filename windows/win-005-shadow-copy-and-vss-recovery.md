@@ -42,3 +42,26 @@ foreach ($Shadow in $ShadowCopies) {
 
 ---
 
+## Step 2 - Recover a Specific File or Folder from Shadow Copy
+
+```powershell
+# Mount a shadow copy as a drive letter for easy file access
+$ShadowID = "{GUID-of-shadow-copy}"   # From Step 1 output
+$Shadow   = Get-WmiObject Win32_ShadowCopy | Where-Object { $_.ID -eq $ShadowID }
+
+# Create a symbolic link to access the shadow copy contents
+$ShadowPath = $Shadow.DeviceName + "\"
+$LinkPath   = "C:\ShadowMount"
+
+cmd /c "mklink /d $LinkPath $ShadowPath"
+Write-Host "Shadow copy mounted at: $LinkPath"
+Write-Host "Browse to $LinkPath to find and copy files"
+Write-Host ""
+Write-Host "When done: cmd /c 'rmdir $LinkPath'"
+
+# Navigate to the shadow copy (e.g., find deleted document)
+# $LinkPath\Users\jsmith\Documents\deleted-file.docx
+# Copy it to the desired location
+```
+
+---
