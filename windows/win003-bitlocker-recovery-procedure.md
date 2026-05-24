@@ -31,3 +31,30 @@ access. The recovery key IS the proof of authorisation.
 
 ---
 
+## Step 1 - Retrieve the Recovery Key
+
+BitLocker recovery keys are stored in one of three places depending on how
+the encryption was configured. Check in this order:
+
+**Source 1 - Active Directory (most common for domain-joined machines):**
+```powershell
+# Run on any machine with the AD module and admin rights
+# Method A: Search by computer name
+$ComputerName = "WIN10-JSMITH"
+$Computer = Get-ADComputer -Identity $ComputerName
+Get-ADObject -Filter { objectClass -eq "msFVE-RecoveryInformation" } `
+    -SearchBase $Computer.DistinguishedName `
+    -Properties "msFVE-RecoveryPassword", "msFVE-RecoveryGuid",
+                 "whenCreated", "distinguishedName" |
+    Select-Object whenCreated, "msFVE-RecoveryPassword", "msFVE-RecoveryGuid" |
+    Sort-Object whenCreated -Descending
+
+# Method B: Search by recovery key ID shown on the recovery screen
+# The recovery screen shows an 8-character Key ID fragment
+$KeyIDFragment = "ABCD1234"   # Replace with the 8 chars shown on screen
+Get-ADObject -Filter { msFVE-RecoveryGuid -like "*$KeyIDFragment*" } `
+    -SearchBase (Get-ADDomain).DistinguishedName `
+    -Properties "msFVE-RecoveryPassword", whenCreated |
+    Select-Object whenCreated, "msFVE-RecoveryPassword"
+```
+
