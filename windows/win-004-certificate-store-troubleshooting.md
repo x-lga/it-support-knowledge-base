@@ -136,3 +136,30 @@ $TCPClient.Close()
 
 ---
 
+## Step 4 — Install a Missing Certificate
+
+```powershell
+# Install a root CA certificate to the machine Trusted Root store
+# (Requires: Administrator, or GPO deployment for organisation-wide)
+$CertFilePath = "C:\Temp\contoso-root-ca.cer"
+
+# Method A: PowerShell
+$Cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($CertFilePath)
+$Store = New-Object System.Security.Cryptography.X509Certificates.X509Store(
+    "Root", "LocalMachine")
+$Store.Open("ReadWrite")
+$Store.Add($Cert)
+$Store.Close()
+Write-Host "Root CA installed: $($Cert.Subject)"
+
+# Method B: certutil (works from cmd.exe, easier for scripts)
+# certutil -addstore "Root" "C:\Temp\contoso-root-ca.cer"
+# certutil -addstore "CA"   "C:\Temp\contoso-intermediate.cer"    # For intermediate
+
+# Verify installation
+Get-ChildItem -Path "Cert:\LocalMachine\Root" |
+    Where-Object { $_.Subject -like "*contoso*" }
+```
+
+---
+
