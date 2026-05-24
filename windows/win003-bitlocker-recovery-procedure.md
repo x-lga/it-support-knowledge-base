@@ -72,3 +72,24 @@ Filename format: BitLocker Recovery Key [GUID].txt
 
 ---
 
+## Step 2 - Validate the Key Before Entering
+
+The recovery screen shows a Key ID. Always verify the key matches this ID
+before entering - entering the wrong key extends lockout time on some hardware.
+
+```powershell
+# Verify recovery key matches the Key ID shown on screen
+# Run on the recovered machine after it boots (or on another machine with manage-bde access)
+manage-bde -protectors -get C:
+
+# Output will include a line like:
+# Recovery Password:
+#   ID: {ABCD1234-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+#   Password: 123456-234567-345678-456789-567890-678901-789012-890123
+#
+# The first 8 chars of the ID (ABCD1234) should match what the screen showed
+```
+
+---
+
+
