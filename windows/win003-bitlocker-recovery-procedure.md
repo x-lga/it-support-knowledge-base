@@ -58,3 +58,10 @@ Get-ADObject -Filter { msFVE-RecoveryGuid -like "*$KeyIDFragment*" } `
     Select-Object whenCreated, "msFVE-RecoveryPassword"
 ```
 
+**Source 2 - Microsoft Account or Entra ID (cloud-backed):**
+```
+Azure Portal → Entra ID → Devices → [Device Name] → BitLocker Keys
+  OR
+Microsoft Account portal: account.microsoft.com → Devices → [Device] → BitLocker Keys
+```
+
