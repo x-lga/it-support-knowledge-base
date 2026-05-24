@@ -65,3 +65,10 @@ Azure Portal → Entra ID → Devices → [Device Name] → BitLocker Keys
 Microsoft Account portal: account.microsoft.com → Devices → [Device] → BitLocker Keys
 ```
 
+**Source 3 - Local file or USB drive (manual backup):**
+The user may have saved the recovery key to a file during BitLocker setup.
+Ask: "During setup, did you save a recovery key to a USB or file?"
+Filename format: BitLocker Recovery Key [GUID].txt
+
+---
+
