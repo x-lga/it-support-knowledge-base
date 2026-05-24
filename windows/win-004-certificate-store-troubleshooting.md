@@ -82,3 +82,46 @@ foreach ($Cert in $ExpiringOrExpired) {
 ```
 
 ---
+
+## Step 3 - Test a Specific Certificate Chain
+
+When a specific HTTPS connection is failing, test the chain directly:
+
+```powershell
+# Test the certificate chain for a specific website or server
+$HostName = "internal.contoso.com"
+$Port     = 443
+
+$TCPClient  = New-Object System.Net.Sockets.TcpClient($HostName, $Port)
+$SSLStream  = New-Object System.Net.Security.SslStream($TCPClient.GetStream(), $false,
+    { param($sender, $cert, $chain, $errors)
+      # Capture chain info without validating — for diagnostic purposes
+      $script:CertChain  = $chain
+      $script:ChainErrors = $errors
+      return $true   # Accept all — we are inspecting, not validating
+    })
+
+$SSLStream.AuthenticateAsClient($HostName)
+$ServerCert = $SSLStream.RemoteCertificate
+
+Write-Host "Server Certificate:"
+Write-Host "  Subject    : $($ServerCert.Subject)"
+Write-Host "  Issuer     : $($ServerCert.Issuer)"
+Write-Host "  Valid from : $($ServerCert.GetEffectiveDateString())"
+Write-Host "  Valid to   : $($ServerCert.GetExpirationDateString())"
+Write-Host ""
+Write-Host "Certificate Chain:"
+for ($i = 0; $i -lt $CertChain.ChainElements.Count; $i++) {
+    $Element = $CertChain.ChainElements[$i]
+    Write-Host "  [$i] $($Element.Certificate.Subject)"
+    if ($Element.ChainElementStatus.Count -gt 0) {
+        foreach ($Status in $Element.ChainElementStatus) {
+            Write-Host "      STATUS: $($Status.Status) — $($Status.StatusInformation)" -ForegroundColor Red
+        }
+    }
+}
+
+$SSLStream.Close()
+$TCPClient.Close()
+```
+
