@@ -136,7 +136,7 @@ $TCPClient.Close()
 
 ---
 
-## Step 4 — Install a Missing Certificate
+## Step 4 - Install a Missing Certificate
 
 ```powershell
 # Install a root CA certificate to the machine Trusted Root store
@@ -162,4 +162,31 @@ Get-ChildItem -Path "Cert:\LocalMachine\Root" |
 ```
 
 ---
+
+## Step 5 - Repair Private Key Permissions
+
+When a certificate exists but cannot be used (authentication failures,
+code signing errors), the private key may be present but inaccessible:
+
+```powershell
+# Find the certificate with the private key issue
+$CertThumbprint = "ABCDEF1234567890"   # Replace with actual thumbprint
+$Cert = Get-Item "Cert:\LocalMachine\My\$CertThumbprint"
+
+# Check if the private key exists
+Write-Host "Has private key: $($Cert.HasPrivateKey)"
+if (-not $Cert.HasPrivateKey) {
+    Write-Host "ERROR: Certificate exists but private key is MISSING"
+    Write-Host "Resolution: Reimport the certificate as a PFX (includes private key)"
+    Write-Host "If PFX is unavailable: request a new certificate from your CA"
+} else {
+    Write-Host "Private key exists - checking permissions..."
+    # Use certutil to check the key container
+    & certutil -verifystore My $CertThumbprint
+}
+```
+
+
+---
+
 
