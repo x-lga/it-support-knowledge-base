@@ -28,3 +28,30 @@ a different resolution path:
 
 ---
 
+## Step 1 - Identify the Certificate Store Structure
+
+```powershell
+# View certificates in all major stores
+# Personal store (machine certificates — used for machine auth, SSL)
+Get-ChildItem -Path "Cert:\LocalMachine\My" |
+    Select-Object Subject, Issuer, NotBefore, NotAfter, Thumbprint |
+    Format-Table -AutoSize
+
+# Trusted Root Certification Authorities
+Get-ChildItem -Path "Cert:\LocalMachine\Root" |
+    Select-Object Subject, Thumbprint, NotAfter |
+    Format-Table -AutoSize
+
+# Intermediate Certification Authorities
+Get-ChildItem -Path "Cert:\LocalMachine\CA" |
+    Select-Object Subject, Issuer, Thumbprint, NotAfter |
+    Format-Table -AutoSize
+
+# Current user personal certificates (for per-user auth like smart cards)
+Get-ChildItem -Path "Cert:\CurrentUser\My" |
+    Select-Object Subject, NotAfter, Thumbprint |
+    Format-Table -AutoSize
+```
+
+---
+
