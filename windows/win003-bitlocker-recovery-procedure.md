@@ -92,4 +92,30 @@ manage-bde -protectors -get C:
 
 ---
 
+## Step 3 - Enter Recovery and Restore Normal Boot
+
+On the recovery screen:
+1. Press Esc → "More recovery options" → "Enter recovery key"
+2. Type the 48-digit recovery key (6 groups of 8 digits, separated by dashes)
+3. Windows boots normally
+
+After booting:
+
+```powershell
+# Verify BitLocker encryption is still active (it should be — just unlocked)
+Get-BitLockerVolume -MountPoint "C:" | Select-Object MountPoint, EncryptionMethod,
+    VolumeStatus, ProtectionStatus, LockStatus
+
+# Expected after successful recovery:
+# VolumeStatus: FullyEncrypted
+# ProtectionStatus: On
+# LockStatus: Unlocked
+
+# If the TPM triggered recovery due to a legitimate change (firmware update, etc.):
+# Suspend BitLocker, make the change, resume — this prevents another recovery trigger
+Suspend-BitLocker -MountPoint "C:" -RebootCount 1
+# RebootCount 1 = suspend for exactly one reboot, then re-enable automatically
+```
+
+---
 
