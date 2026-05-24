@@ -22,3 +22,23 @@ a formal backup restore. They are NOT a backup substitute:
 
 ---
 
+## Step 1 - List Available Shadow Copies
+
+```powershell
+# List all shadow copies on all volumes
+$ShadowCopies = Get-WmiObject Win32_ShadowCopy
+foreach ($Shadow in $ShadowCopies) {
+    $Age = [math]::Round(((Get-Date) - [Management.ManagementDateTimeConverter]::ToDateTime($Shadow.InstallDate)).TotalDays, 1)
+    Write-Host ""
+    Write-Host "Shadow Copy ID : $($Shadow.ID)"
+    Write-Host "Volume         : $($Shadow.VolumeName)"
+    Write-Host "Created        : $([Management.ManagementDateTimeConverter]::ToDateTime($Shadow.InstallDate))"
+    Write-Host "Age            : $Age days ago"
+}
+
+# Quick check using vssadmin
+& vssadmin list shadows /for=C:
+```
+
+---
+
