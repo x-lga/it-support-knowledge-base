@@ -125,3 +125,14 @@ $SSLStream.Close()
 $TCPClient.Close()
 ```
 
+**Interpreting chain errors:**
+
+| Error | Meaning | Resolution |
+|-------|---------|-----------|
+| `UntrustedRoot` | Root CA not in Trusted Root store | Install root CA certificate |
+| `PartialChain` | Intermediate CA missing | Install intermediate CA certificate |
+| `NotTimeValid` | Certificate is expired or not yet valid | Renew or replace certificate |
+| `RevocationStatusUnknown` | CRL/OCSP unreachable | Check network access to CRL distribution points |
+
+---
+
