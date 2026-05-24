@@ -113,3 +113,20 @@ Start-Sleep -Seconds 10
 
 ---
 
+## Known Edge Cases
+
+**VSS failures with SQL Server:**
+SQL Server has its own VSS writer (SQLServerWriter). When it fails, backup jobs
+skip SQL databases silently. Check the SQL Server VSS writer state separately
+and restart the SQL Server VSS Writer service if it shows Failed.
+
+**VSS and storage spaces:**
+VSS behaves differently on Storage Spaces volumes - hardware VSS providers may
+not interact correctly with software RAID. If VSS consistently fails on a
+Storage Spaces volume, use the backup software's application-consistent backup
+method instead of VSS-based snapshots.
+
+
+---
+
+
