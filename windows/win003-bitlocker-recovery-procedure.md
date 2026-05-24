@@ -119,3 +119,36 @@ Suspend-BitLocker -MountPoint "C:" -RebootCount 1
 
 ---
 
+## Step 4 — Identify and Resolve the Root Cause
+
+```powershell
+# Check BitLocker event log for what triggered recovery
+Get-WinEvent -LogName "Microsoft-Windows-BitLocker/BitLocker Operational" |
+    Where-Object { $_.Id -in (764, 768, 769, 772) } |
+    Select-Object TimeCreated, Id, Message |
+    Sort-Object TimeCreated -Descending |
+    Select-Object -First 10
+
+# Key Event IDs:
+# 764 = BitLocker volume unlock using recovery password (this is the recovery event)
+# 768 = TPM PCR values changed (the specific PCR that triggered recovery)
+# 769 = Recovery mode entered
+# 772 = BitLocker enabled successfully
+
+# Event 768 message will contain which PCR changed — this identifies the trigger
+```
+
+**After a firmware update:** Recovery is expected. No action beyond normal recovery.
+**After a Windows feature update:** Expected. BitLocker resumes automatically.
+**Repeated recovery with no known cause:** Investigate TPM health and whether
+PCR values are being changed by software or a BIOS setting.
+
+```powershell
+# Check TPM health
+Get-Tpm | Select-Object TpmPresent, TpmReady, TpmEnabled, TpmActivated,
+    ManagedAuthLevel, TpmOwned
+# TpmReady should be True after recovery
+```
+
+---
+
