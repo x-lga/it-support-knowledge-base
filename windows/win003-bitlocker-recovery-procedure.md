@@ -119,7 +119,7 @@ Suspend-BitLocker -MountPoint "C:" -RebootCount 1
 
 ---
 
-## Step 4 — Identify and Resolve the Root Cause
+## Step 4 - Identify and Resolve the Root Cause
 
 ```powershell
 # Check BitLocker event log for what triggered recovery
@@ -149,6 +149,20 @@ Get-Tpm | Select-Object TpmPresent, TpmReady, TpmEnabled, TpmActivated,
     ManagedAuthLevel, TpmOwned
 # TpmReady should be True after recovery
 ```
+
+---
+
+## Post-Recovery Checklist
+
+- [ ] Recovery key retrieved from AD or Entra ID and matched to the Key ID
+- [ ] Machine successfully booted after key entry
+- [ ] BitLocker ProtectionStatus confirmed as "On" (not suspended)
+- [ ] Root cause of recovery trigger identified and documented
+- [ ] If root cause was hardware change: verify no further recovery triggers expected
+- [ ] Recovery key backed up in AD (confirm backup current after recovery):
+      `manage-bde -protectors -adbackup C: -id {GUID-of-recovery-protector}`
+- [ ] User educated on why recovery triggered (reduces repeat tickets)
+
 
 ---
 
