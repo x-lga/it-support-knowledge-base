@@ -55,3 +55,30 @@ Get-ChildItem -Path "Cert:\CurrentUser\My" |
 
 ---
 
+## Step 2 - Identify Expired or Expiring Certificates
+
+```powershell
+$Now     = Get-Date
+$Warning = $Now.AddDays(30)
+
+# Find certificates expiring within 30 days or already expired in the machine store
+$AllCerts = Get-ChildItem -Path "Cert:\LocalMachine" -Recurse -ErrorAction SilentlyContinue
+
+$ExpiringOrExpired = $AllCerts | Where-Object {
+    $_.NotAfter -le $Warning -and -not [string]::IsNullOrEmpty($_.Subject)
+}
+
+foreach ($Cert in $ExpiringOrExpired) {
+    $DaysRemaining = [math]::Round(($Cert.NotAfter - $Now).TotalDays, 0)
+    $Status = if ($DaysRemaining -lt 0) { "EXPIRED $([math]::Abs($DaysRemaining)) days ago" }
+              else                       { "Expires in $DaysRemaining days" }
+
+    Write-Host ""
+    Write-Host "  Subject  : $($Cert.Subject)"
+    Write-Host "  Store    : $($Cert.PSParentPath -replace '.*\\', '')"
+    Write-Host "  Thumbprint: $($Cert.Thumbprint)"
+    Write-Host "  Status   : $Status" -ForegroundColor $(if ($DaysRemaining -lt 0) { "Red" } else { "Yellow" })
+}
+```
+
+---
