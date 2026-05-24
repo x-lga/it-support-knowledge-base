@@ -7,3 +7,18 @@
 **Last verified:** 2026-07
 
 ---
+
+## What Shadow Copies Are and Are Not
+
+Volume Shadow Copy (VSS) creates point-in-time snapshots of volumes. They are
+useful for quickly recovering accidentally deleted or overwritten files without
+a formal backup restore. They are NOT a backup substitute:
+
+- Shadow copies live on the same physical disk as the data they protect
+- If the disk fails, both the data and the shadow copies are lost
+- Ransomware typically deletes shadow copies as one of its first actions
+  (`vssadmin delete shadows /all /quiet` is in almost every ransomware strain)
+- Shadow copies do not span across drives (each volume has its own shadow copies)
+
+---
+
