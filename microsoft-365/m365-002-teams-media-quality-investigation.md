@@ -129,4 +129,24 @@ tracert 13.107.64.1   # One of Microsoft Teams relay IPs
 
 ---
 
+## Step 5 - Check Network Driver and Device Issues
+
+```powershell
+# Check for Windows Audio service issues (local audio device problem)
+Get-Service -Name "AudioSrv", "AudioEndpointBuilder" |
+    Select-Object Name, Status, StartType
+
+# Check for audio device driver issues
+Get-WmiObject Win32_SoundDevice |
+    Select-Object Name, Status, StatusInfo
+
+# Test Teams media port availability (UDP 3478-3481 outbound)
+Test-NetConnection -ComputerName "worldaz.tr.teams.microsoft.com" -Port 3478
+# Note: This tests TCP — UDP cannot be tested with Test-NetConnection
+# For UDP testing, use the Network Assessment Tool in Step 3
+```
+
+---
+
+
 
