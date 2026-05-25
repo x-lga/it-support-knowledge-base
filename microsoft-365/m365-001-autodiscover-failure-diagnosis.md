@@ -32,3 +32,23 @@ but the user's mailbox has been migrated to M365, Outlook connects to the wrong
 endpoint and authentication fails or the mailbox is not found.
 
 ---
+
+## Step 1 - Run the Autodiscover Test
+
+```powershell
+# In Outlook: Hold Ctrl and right-click the Outlook icon in the system tray
+# Select "Test Email AutoConfiguration"
+# This shows exactly which Autodiscover source Outlook used and what it returned
+
+# Alternatively, test from PowerShell using Microsoft's Remote Connectivity Analyzer
+# Navigate to: https://testconnectivity.microsoft.com
+# Select: Office 365 → Outlook Connectivity → Run the test
+```
+
+The test output shows:
+- Which Autodiscover method succeeded
+- The Exchange server URL returned
+- Whether it points to on-premises or cloud
+- Any certificate errors encountered
+
+---
