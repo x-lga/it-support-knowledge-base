@@ -119,4 +119,16 @@ This shows exactly what permissions the user has and WHERE they come from:
 
 ---
 
+## Best Practice Recommendation
+
+Document in every resolved ticket:
+- Where inheritance was broken
+- Why (direct share, workflow, manual)
+- What was done to fix it
+- Whether the unique permissions were intentional or accidental
+
+This context helps when the same user reports access issues in future.
+
+
+---
 
