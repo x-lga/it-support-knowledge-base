@@ -18,3 +18,11 @@ ISP, the corporate WAN, the Teams service, and the far-end participant's setup.
 Without a structured approach, these tickets consume hours of back-and-forth
 with no resolution. This article provides the tooling and methodology to identify
 the actual cause in under 30 minutes.
+
+**Key insight:** Microsoft Teams Real-Time Transport Protocol (RTP) media goes
+peer-to-peer when possible, or via Microsoft transport relays. Audio and video
+packets have strict latency requirements. Quality issues almost always trace
+to one of: insufficient bandwidth, packet loss, high jitter, or routing that
+adds latency (VPN hairpinning is a frequent offender).
+
+---
