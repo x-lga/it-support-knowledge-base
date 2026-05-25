@@ -70,3 +70,33 @@ The Call Analytics report shows data for ALL participants. Use this to scope:
 | Intermittent across multiple users at the same time | Corporate WAN or ISP event | Check network monitoring for the affected time window |
 
 ---
+
+## Step 3 - Run the Teams Network Assessment Tool
+
+For a user on the corporate network experiencing consistent poor quality:
+
+```powershell
+# Download the Microsoft Teams Network Assessment Tool
+# From: https://www.microsoft.com/download/details.aspx?id=103017
+# Run after installation:
+
+cd "C:\Program Files (x86)\Microsoft Teams Network Assessment Tool"
+
+# Run connectivity and quality test (takes 2–5 minutes)
+.\NetworkAssessmentTool.exe
+
+# The tool outputs:
+#   Relay IP address and region
+#   Loss rate, latency, and jitter to Microsoft transport relays
+#   UDP availability (Teams prefers UDP — TCP fallback increases latency)
+#   Overall result: Pass or Fail
+
+# Target results for good Teams quality:
+#   Loss rate       : < 1%
+#   Latency         : < 100ms to nearest relay
+#   Jitter          : < 30ms
+#   UDP reachable   : True (port 3478–3481 UDP outbound)
+```
+
+---
+
