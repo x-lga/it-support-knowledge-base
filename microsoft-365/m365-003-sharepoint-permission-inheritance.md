@@ -7,3 +7,21 @@
 **Last verified:** 2026-07
 
 ---
+
+## The Inheritance Problem That Causes 80% of SharePoint Access Tickets
+
+SharePoint Online permissions cascade from top to bottom by default:
+Site → Library → Folder → Document. A user with Read access to the site
+inherits Read access to all libraries, folders, and documents in it.
+
+Inheritance breaks happen when:
+- Someone clicks "Share" on a specific folder or document (creates unique permissions)
+- A workflow or Power Automate changes item permissions automatically
+- A site admin removes inheritance to create a restricted area
+- A user moves a document between libraries (does not inherit the new library's permissions)
+
+Once inheritance is broken at any level, the item has its own permission list.
+The site's permissions no longer apply to it. This is the source of almost every
+"I can't access this file but I have access to the site" ticket.
+
+---
