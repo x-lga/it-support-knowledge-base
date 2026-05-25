@@ -51,3 +51,28 @@ foreach ($Perm in $Permissions) {
 ```
 
 ---
+
+## Step 2 - Restore Inheritance (Fix the Broken Inheritance)
+
+```powershell
+# Restore inheritance on a specific folder
+# WARNING: This REMOVES any unique permissions and reverts to parent permissions
+# Warn the requester that any directly-shared access will be removed
+
+$FolderPath = "/sites/Finance/Documents/2026 Reports"
+$FolderItem = Get-PnPListItem -List "Documents" `
+    -Query "<View><Query><Where><Eq><FieldRef Name='FileRef'/><Value Type='Text'>$FolderPath</Value></Eq></Where></Query></View>"
+
+Set-PnPListItemPermission -List "Documents" `
+    -Identity $FolderItem.Id `
+    -InheritPermissions
+Write-Host "Inheritance restored — item now inherits from parent library/site"
+
+# Verify
+$FolderItemUpdated = Get-PnPListItem -List "Documents" -Id $FolderItem.Id
+Write-Host "Has unique permissions now: $($FolderItemUpdated.HasUniqueRoleAssignments)"
+# Should be False
+```
+
+---
+
