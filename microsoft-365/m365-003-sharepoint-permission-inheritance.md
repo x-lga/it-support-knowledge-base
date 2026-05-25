@@ -76,7 +76,7 @@ Write-Host "Has unique permissions now: $($FolderItemUpdated.HasUniqueRoleAssign
 
 ---
 
-## Step 3 — Add a Specific User to a Uniquely-Permissioned Item
+## Step 3 - Add a Specific User to a Uniquely-Permissioned Item
 
 Sometimes the unique permissions are intentional and the correct fix is
 adding the user rather than restoring inheritance:
@@ -96,6 +96,25 @@ Write-Host "Read access granted to $UserEmail on item $ItemId"
 # Verify the user now has access
 $UpdatedPerms = Get-PnPListItemPermission -List "Documents" -Identity $ItemId
 $UpdatedPerms | Where-Object { $_.Member.Email -eq $UserEmail }
+```
+
+---
+
+## Step 4 - Run the SharePoint Access Check Tool
+
+For complex permission investigations, use the built-in Access Check:
+
+```
+SharePoint site → Site Settings → Site Permissions →
+  Check Permissions → enter the user's email
+  → Check Now
+
+This shows exactly what permissions the user has and WHERE they come from:
+  - Direct assignment to this site
+  - Via a group
+  - Via sharing link
+  - Via unique item permission
+  - No access (and why)
 ```
 
 ---
