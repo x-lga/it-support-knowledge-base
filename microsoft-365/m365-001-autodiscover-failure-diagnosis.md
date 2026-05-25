@@ -123,7 +123,7 @@ XML: `%LocalAppData%\Microsoft\Outlook\*.xml` and restart Outlook.
 **Hybrid environment with some mailboxes on-prem and some in M365:**
 Outlook must be able to reach both endpoints. The SCP should point to M365,
 and Exchange on-premises must be correctly configured for hybrid routing.
-The Hybrid Configuration Wizard handles this — do not manually configure if
+The Hybrid Configuration Wizard handles this - do not manually configure if
 Hybrid Configuration Wizard can be run.
 
 
