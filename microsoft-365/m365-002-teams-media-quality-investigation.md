@@ -26,3 +26,24 @@ to one of: insufficient bandwidth, packet loss, high jitter, or routing that
 adds latency (VPN hairpinning is a frequent offender).
 
 ---
+
+## Step 1 - Pull the Call Analytics Report
+
+Microsoft provides per-call quality data in the Teams Admin Centre:
+
+```
+Teams Admin Centre (admin.teams.microsoft.com) →
+  Users → [User Name] → Meetings & Calls tab →
+  Click on the specific meeting or call → Call Analytics
+
+The report shows per-participant:
+  Audio quality       : Good / Poor / No audio
+  Video quality       : Good / Poor
+  Screen share quality: Good / Poor
+  Packet loss (%)     : Audio, Video
+  Round-trip latency  : ms
+  Jitter              : ms
+  Connection type     : WiFi / Ethernet / Cellular
+  IP addresses        : Internal and external
+  Codec               : Audio and video codec used
+```
