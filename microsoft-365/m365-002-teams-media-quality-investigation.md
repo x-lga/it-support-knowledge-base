@@ -100,3 +100,33 @@ cd "C:\Program Files (x86)\Microsoft Teams Network Assessment Tool"
 
 ---
 
+## Step 4 - Check for VPN Split Tunnelling
+
+The single most common enterprise Teams quality issue is VPN hairpinning:
+Teams media traffic goes from the user's machine → VPN tunnel → corporate network
+→ back out to the internet → Microsoft Teams relay. This adds 50–200ms latency
+and creates a bottleneck at the VPN gateway.
+
+**The fix:** Split tunnelling - route Teams media IP ranges directly to the internet,
+bypassing the VPN. Microsoft publishes the IP ranges specifically for this:
+
+```powershell
+# Verify whether Teams traffic is going through the VPN or directly
+# On the user's machine while on VPN:
+tracert 13.107.64.1   # One of Microsoft Teams relay IPs
+
+# If the first hop after the VPN address is a corporate IP: hairpinning is occurring
+# If the first hop is your ISP gateway: split tunnelling is working correctly
+
+# Microsoft's recommended Teams IP ranges for split tunnelling exclusion:
+# https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-vpn-implement-split-tunnel
+# Key ranges:
+#   13.107.64.0/18     (Teams media)
+#   52.112.0.0/14      (Teams media)
+#   52.122.0.0/15      (Teams media)
+#   52.238.119.141/32  (Teams media)
+```
+
+---
+
+
