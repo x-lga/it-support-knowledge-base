@@ -57,3 +57,16 @@ The report shows per-participant:
 | Video packet loss | < 5.0% | > 5.0% |
 
 ---
+
+## Step 2 - Identify the Problem Scope
+
+The Call Analytics report shows data for ALL participants. Use this to scope:
+
+| Pattern | Cause | L1 Action |
+|---------|-------|-----------|
+| Only the reporting user shows Poor metrics | Local device, local network, or local ISP | Investigate the user's endpoint and local network |
+| All participants show Poor metrics | Meeting room equipment, central relay, or broad network issue | Check the meeting room network connection |
+| One specific remote participant shows Poor | Their end has the problem | Advise the other participant to investigate their setup |
+| Intermittent across multiple users at the same time | Corporate WAN or ISP event | Check network monitoring for the affected time window |
+
+---
