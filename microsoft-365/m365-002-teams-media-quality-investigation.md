@@ -47,3 +47,13 @@ The report shows per-participant:
   IP addresses        : Internal and external
   Codec               : Audio and video codec used
 ```
+**Quality thresholds (Microsoft definitions):**
+
+| Metric | Good | Poor |
+|--------|------|------|
+| Audio packet loss | < 2.5% | > 2.5% |
+| Round-trip latency | < 500ms | > 500ms |
+| Jitter | < 30ms | > 30ms |
+| Video packet loss | < 5.0% | > 5.0% |
+
+---
