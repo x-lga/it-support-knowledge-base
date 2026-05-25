@@ -25,3 +25,29 @@ The site's permissions no longer apply to it. This is the source of almost every
 "I can't access this file but I have access to the site" ticket.
 
 ---
+
+## Step 1 - Identify Where Inheritance Is Broken
+
+```powershell
+# Using PnP PowerShell (install: Install-Module -Name PnP.PowerShell)
+Connect-PnPOnline -Url "https://contoso.sharepoint.com/sites/Finance" `
+    -Interactive
+
+# Check if a specific library has unique permissions (inheritance broken)
+$Library = Get-PnPList -Identity "Documents"
+Write-Host "Library has unique permissions: $(-not $Library.HasUniqueRoleAssignments)"
+# True = inheritance broken. False = inherits from site.
+
+# Check a specific folder
+$Folder = Get-PnPFolder -Url "/sites/Finance/Documents/2026 Reports"
+$FolderItem = Get-PnPListItem -List "Documents" -Id $Folder.ListItemAllFields.Id
+Write-Host "Folder has unique permissions: $($FolderItem.HasUniqueRoleAssignments)"
+
+# List the unique permissions on an item (when inheritance is broken)
+$Permissions = Get-PnPListItemPermission -List "Documents" -Identity $FolderItem.Id
+foreach ($Perm in $Permissions) {
+    Write-Host "  $($Perm.Member.Title) — $($Perm.RoleDefinitionBindings.Name -join ', ')"
+}
+```
+
+---
