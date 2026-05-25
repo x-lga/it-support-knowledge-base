@@ -98,4 +98,20 @@ Get-ADObject -Filter { servicePrincipalName -like "exchangeAB/*" } `
 
 ---
 
+## Step 4 - Test Direct M365 Connectivity
+
+```powershell
+# Test whether the machine can reach M365 Autodiscover directly
+Test-NetConnection -ComputerName "autodiscover-s.outlook.com" -Port 443
+Test-NetConnection -ComputerName "outlook.office365.com" -Port 443
+Test-NetConnection -ComputerName "login.microsoftonline.com" -Port 443
+
+# All three should show TcpTestSucceeded: True
+# If any fail: proxy or firewall is blocking M365 connectivity
+# Check: Get-WinHttpProxy or inspect proxy settings in IE/Edge
+netsh winhttp show proxy
+```
+
+---
+
 
