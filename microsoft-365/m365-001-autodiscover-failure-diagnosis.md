@@ -114,4 +114,11 @@ netsh winhttp show proxy
 
 ---
 
+## Known Edge Cases
+
+**Autodiscover failing for one user but not others on same machine:**
+The per-user Autodiscover cache may be stale. Delete the cached Autodiscover
+XML: `%LocalAppData%\Microsoft\Outlook\*.xml` and restart Outlook.
+
+
 
