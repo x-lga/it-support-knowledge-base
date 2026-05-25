@@ -52,3 +52,25 @@ The test output shows:
 - Any certificate errors encountered
 
 ---
+
+## Step 2 - Identify Whether SCP Is Pointing to the Wrong Server
+
+```powershell
+# Run on a domain-joined machine or on the DC
+# This shows what Autodiscover SCP value AD is returning
+Import-Module ActiveDirectory
+
+# Find all Autodiscover SCP records in AD
+Get-ADObject -Filter { servicePrincipalName -like "exchangeAB/*" } `
+    -SearchBase (Get-ADRootDSE).configurationNamingContext `
+    -Properties ServiceBindingInformation |
+    Select-Object Name, ServiceBindingInformation
+
+# In a fully M365-migrated environment, the SCP should point to
+# https://autodiscover-s.outlook.com/autodiscover/autodiscover.xml
+# If it still points to the old Exchange server, Outlook on domain-joined machines
+# will always try the on-premises endpoint first
+```
+
+---
+
