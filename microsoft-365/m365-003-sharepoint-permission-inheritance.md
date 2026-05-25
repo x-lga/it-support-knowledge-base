@@ -76,3 +76,28 @@ Write-Host "Has unique permissions now: $($FolderItemUpdated.HasUniqueRoleAssign
 
 ---
 
+## Step 3 — Add a Specific User to a Uniquely-Permissioned Item
+
+Sometimes the unique permissions are intentional and the correct fix is
+adding the user rather than restoring inheritance:
+
+```powershell
+# Grant a user access to a specific item (preserves unique permissions)
+$UserEmail = "jsmith@contoso.com"
+$ItemId    = 42   # List item ID
+
+Set-PnPListItemPermission -List "Documents" `
+    -Identity $ItemId `
+    -User $UserEmail `
+    -AddRole "Read"
+
+Write-Host "Read access granted to $UserEmail on item $ItemId"
+
+# Verify the user now has access
+$UpdatedPerms = Get-PnPListItemPermission -List "Documents" -Identity $ItemId
+$UpdatedPerms | Where-Object { $_.Member.Email -eq $UserEmail }
+```
+
+---
+
+
