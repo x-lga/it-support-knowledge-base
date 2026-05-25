@@ -74,3 +74,28 @@ Get-ADObject -Filter { servicePrincipalName -like "exchangeAB/*" } `
 
 ---
 
+## Step 3 - Fix the SCP Record for M365-Only Environments
+
+```powershell
+# Update the SCP to point to Microsoft 365 Autodiscover
+# Run on the Exchange server or with Exchange admin tools
+
+# This requires Exchange Management Shell or the Exchange Admin Centre
+# In Exchange Admin Centre:
+# Hybrid → Hybrid Setup Wizard → Configure Hybrid → this updates SCP automatically
+
+# Manual SCP update via ADSI:
+# In adsiedit.msc:
+# Navigate to: Configuration → Services → Microsoft Exchange → [Org] → Administrative Groups
+#   → [Group] → Servers → [Server] → Protocols → Autodiscover
+# Find the serviceBindingInformation attribute
+# Change from: https://[on-prem-exchange]/autodiscover/autodiscover.xml
+# Change to:   https://autodiscover-s.outlook.com/autodiscover/autodiscover.xml
+
+# After changing SCP, force Outlook to re-run Autodiscover:
+# Close Outlook → Delete Outlook profile → Recreate profile (Autodiscover will find M365)
+```
+
+---
+
+
