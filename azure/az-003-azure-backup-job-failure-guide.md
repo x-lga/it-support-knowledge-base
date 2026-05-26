@@ -47,4 +47,30 @@ Click the failed job to see:
 
 ---
 
+## Step 2 - Fix Azure Guest Agent Issues
+
+```powershell
+# Connect to the VM via Bastion, then run:
+# Check Azure Guest Agent (Windows)
+Get-Service -Name "WindowsAzureGuestAgent", "WindowsAzureTelemetryService",
+    "WaAppAgent" | Select-Object Name, Status, StartType
+
+# If any are stopped:
+Start-Service -Name "WindowsAzureGuestAgent" -ErrorAction SilentlyContinue
+Start-Service -Name "WaAppAgent" -ErrorAction SilentlyContinue
+
+# Check Guest Agent version (minimum 2.7.41491.971 for current Azure Backup)
+$GuestAgentPath = "C:\WindowsAzure\GuestAgent*"
+Get-ChildItem $GuestAgentPath | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+
+# If Guest Agent needs reinstall:
+# Download latest: https://go.microsoft.com/fwlink/?LinkID=394789
+# Uninstall existing: Add/Remove Programs → Microsoft Azure VM Agent
+# Install new version
+# Restart both services above
+```
+
+---
+
+
 
