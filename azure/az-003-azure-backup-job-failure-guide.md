@@ -72,5 +72,30 @@ Get-ChildItem $GuestAgentPath | Sort-Object LastWriteTime -Descending | Select-O
 
 ---
 
+## Step 3 - Fix VSS Writer Failures (for Application-Consistent Backups)
+
+Application-consistent backup for SQL Server and Exchange requires VSS writers
+to be healthy. Backup fails if a writer is in a Failed state:
+
+```powershell
+# On the VM — check all VSS writer states
+$VSS = & vssadmin list writers
+Write-Host $VSS
+
+# Writers in Failed state need their associated service restarted
+# SQL Server writer → restart "SQL Server VSS Writer" service
+Get-Service -Name "SQLWriter" | Restart-Service -Force
+
+# System writer (and others) → restart VSS service
+Get-Service -Name "VSS" | Restart-Service -Force
+Start-Sleep -Seconds 15
+
+# Re-check
+& vssadmin list writers
+```
+
+---
+
+
 
 
