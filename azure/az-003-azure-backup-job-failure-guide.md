@@ -96,6 +96,30 @@ Start-Sleep -Seconds 15
 
 ---
 
+## Step 4 - Trigger a Manual Backup After Resolution
+
+```bash
+# After fixing the underlying issue, trigger an on-demand backup to verify
+az backup protection backup-now \
+    --resource-group rg-banking-prod \
+    --vault-name rsv-contoso-prod \
+    --container-name "IaasVMContainer;iaasvmcontainerv2;rg-banking-prod;vm-app-01" \
+    --item-name "vm;iaasvmcontainerv2;rg-banking-prod;vm-app-01" \
+    --backup-management-type AzureIaasVM \
+    --retain-until $(date -d "+30 days" '+%d-%m-%Y')
+
+# Monitor the job
+az backup job list \
+    --resource-group rg-banking-prod \
+    --vault-name rsv-contoso-prod \
+    --output table \
+    --query "[?status!='Completed']"
+```
+
+
+---
+
+
 
 
 
