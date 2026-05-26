@@ -45,3 +45,19 @@ Look for:
 
 ---
 
+### Step 2 - Check Activity Log for Changes on That Date (3 minutes)
+
+```bash
+# Find all resource creations on the spike date
+az monitor activity-log list \
+    --start-time "2026-07-10T00:00:00Z" \
+    --end-time   "2026-07-11T00:00:00Z" \
+    --query "[?status.value=='Succeeded' && contains(operationName.value, 'write')].{
+        time:eventTimestamp,
+        caller:caller,
+        operation:operationName.localizedValue,
+        resource:resourceId}" \
+    --output table | head -50
+```
+
+
