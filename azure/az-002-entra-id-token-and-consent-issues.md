@@ -54,4 +54,29 @@ Key error codes for token/consent issues:
 
 ---
 
+## Step 2 - Admin Consent for Enterprise Applications
+
+When an application requires permissions that a user cannot self-consent to
+(such as reading all users in the directory), admin consent is required:
+
+```
+Azure Portal → Entra ID → Enterprise Applications →
+  [Application Name] → Permissions →
+  Grant admin consent for [tenant name]
+
+This grants all the permissions the app has requested to all users in the tenant.
+After admin consent, users can sign in without individual consent prompts.
+```
+
+For applications where per-user consent is appropriate (not admin-wide):
+```
+Azure Portal → Entra ID → Enterprise Applications →
+  [Application Name] → Properties →
+  User assignment required: Yes → Assign individual users or groups
+  (This prevents anyone in the tenant from signing in — only assigned users can)
+```
+
+---
+
+
 
