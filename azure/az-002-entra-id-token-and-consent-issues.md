@@ -78,5 +78,37 @@ Azure Portal → Entra ID → Enterprise Applications →
 
 ---
 
+## Step 3 - Diagnose Service Principal and App Registration Issues
+
+```powershell
+# Connect to Microsoft Graph
+Connect-MgGraph -Scopes "Application.Read.All", "User.Read.All"
+
+# Check if the app registration exists and is enabled
+$AppId = "your-application-client-id"
+$App = Get-MgApplication -Filter "appId eq '$AppId'"
+
+if (-not $App) {
+    Write-Host "ERROR: Application registration not found for AppId: $AppId"
+    Write-Host "The app may have been deleted or the wrong AppId is configured."
+} else {
+    Write-Host "App found: $($App.DisplayName)"
+    Write-Host "App ID    : $($App.AppId)"
+    Write-Host "Object ID : $($App.Id)"
+
+    # Check the enterprise application (service principal) in the tenant
+    $SP = Get-MgServicePrincipal -Filter "appId eq '$AppId'"
+    if ($SP) {
+        Write-Host "Service Principal: $($SP.DisplayName) — Enabled: $($SP.AccountEnabled)"
+    } else {
+        Write-Host "WARNING: No Service Principal found — the app has not been consented to in this tenant"
+    }
+}
+```
+
+
+---
+
+
 
 
