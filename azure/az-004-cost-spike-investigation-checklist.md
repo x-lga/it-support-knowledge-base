@@ -24,3 +24,24 @@ one immediately before running the full investigation:
 
 ---
 
+## Checklist: Investigate a Cost Spike in Under 20 Minutes
+
+### Step 1 - Open Cost Analysis (2 minutes)
+
+```
+Azure Portal → Cost Management + Billing → Cost Analysis
+
+Set:
+  Scope     : Subscription or resource group under investigation
+  Date range: Current month vs last month
+  Granularity: Daily
+  Group by  : Service name first, then Resource
+
+Look for:
+  Which day did the spike begin? (Narrows the change window)
+  Which service shows the largest increase?
+  Is it a new charge line (new service) or an increase in an existing line?
+```
+
+---
+
