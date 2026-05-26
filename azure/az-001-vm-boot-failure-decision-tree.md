@@ -54,3 +54,36 @@ VM shows as Failed or cannot start
 
 ---
 
+## Path A - AllocationFailed
+
+```bash
+# Stop (Deallocate) — this is different from Restart
+# Restart keeps the VM on the same host cluster
+# Deallocate releases it entirely — next Start finds a new cluster
+
+az vm deallocate --resource-group rg-prod --name vm-app-01
+# Wait 2-3 minutes for full deallocation
+
+az vm start --resource-group rg-prod --name vm-app-01
+
+# Verify state
+az vm show --resource-group rg-prod --name vm-app-01 \
+    --query "{Name:name, State:powerState}" -o table
+```
+
+If this still returns AllocationFailed, the capacity issue affects the entire
+availability zone or region for this VM size:
+
+```bash
+# Option 1: Try a different VM size (compatible with the existing disk)
+az vm resize --resource-group rg-prod --name vm-app-01 --size Standard_D2s_v5
+
+# Option 2: Check available VM sizes in your region
+az vm list-skus --location uksouth \
+    --query "[?name=='Standard_D4s_v5'].{Name:name, Available:locationInfo[0].zones}" \
+    -o table
+```
+
+---
+
+
