@@ -108,4 +108,29 @@ az reservations reservation-order list \
     -o table
 ```
 
+---
+
+### Step 4 - Immediate Cost Control Actions
+
+```bash
+# Deallocate any VMs that should not be running
+az vm deallocate --resource-group rg-prod --name [vm-name]
+
+# Delete any unexpectedly created resources after confirming with the team
+az resource delete --ids [resource-id]
+
+# Set a budget alert immediately if not already configured
+az consumption budget create \
+    --budget-name "emergency-budget-alert" \
+    --amount 5000 \
+    --time-grain monthly \
+    --start-date "2026-07-01" \
+    --end-date   "2026-12-31" \
+    --notifications '[{"enabled":true,"operator":"GreaterThan","threshold":80,
+      "contactEmails":["it-ops@contoso.com"],"thresholdType":"Actual"}]'
+```
+
+
+---
+
 
