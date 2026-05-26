@@ -101,6 +101,18 @@ az vm boot-diagnostics get-boot-log \
 # Portal → VM → Help → Serial Console
 # This works even when the VM is not reachable via RDP/SSH
 ```
+**Screenshot interpretation:**
+
+| Screenshot Content | Diagnosis | L1 Action |
+|-------------------|-----------|-----------|
+| Windows login screen or desktop | OS healthy — issue is network/firewall | Check NSG, check Bastion, check JIT |
+| "Preparing Automatic Repair" | Windows Update issue or filesystem | Escalate to L2 |
+| Blue screen with stop code | Driver or kernel issue | Note stop code, escalate |
+| `chkdsk` running automatically | Filesystem corruption detected | Let it complete, monitor (may take 30–60 min) |
+| GRUB menu (Linux) | GRUB misconfigured or kernel issue | Escalate to L2 |
+| Black screen, no cursor | VM stuck in initialisation | Stop + Start (not Restart) |
+
+---
 
 
 
