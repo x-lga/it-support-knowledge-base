@@ -7,3 +7,15 @@
 **Last verified:** 2026-07
 
 ---
+
+## Token and Consent Issues - Why They Are Confusing
+
+Entra ID authentication involves multiple types of tokens with different
+lifetimes, and application consent involves both admin consent and user consent
+that can interact in unexpected ways. These issues tend to generate support tickets
+where the symptom is vague ("the app stopped working" or "suddenly getting
+login prompts again") and the cause is invisible to the user.
+
+Understanding the token landscape prevents both misdiagnosis and over-reaction
+(revoking all sessions when only an access token needs refreshing).
+
