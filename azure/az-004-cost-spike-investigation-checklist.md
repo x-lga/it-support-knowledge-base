@@ -94,4 +94,18 @@ Azure Portal → Storage Account → [Account] → Monitoring → Metrics
   If spike is on outbound bandwidth: check VM Network Out metrics
 ```
 
+**Category 4: Service tier or reservation change**
+```bash
+# Check for recent VM resizes
+az monitor activity-log list \
+    --query "[?contains(operationName.value, 'virtualMachines/resize')].{
+        time:eventTimestamp, caller:caller, resource:resourceId}" \
+    -o table
+
+# Check reservation expiry (reservations expire silently — PAYG rates resume)
+az reservations reservation-order list \
+    --query "[?expiryDate<='2026-08-01'].{Name:displayName,Expires:expiryDate}" \
+    -o table
+```
+
 
