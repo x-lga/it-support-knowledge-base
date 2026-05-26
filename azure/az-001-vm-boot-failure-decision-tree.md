@@ -114,5 +114,37 @@ az vm boot-diagnostics get-boot-log \
 
 ---
 
+## Path C - VM Running But Unreachable (RDP/SSH Fails)
+
+```bash
+# Step 1: IP Flow Verify — is the NSG blocking the port?
+az network watcher test-ip-flow \
+    --resource-group rg-prod \
+    --vm vm-app-01 \
+    --direction Inbound \
+    --protocol TCP \
+    --local 10.1.1.4:3389 \
+    --remote [your-ip]:12345
+
+# If Access = Deny: NSG rule is blocking — check and update NSG rules
+
+# Step 2: Is JIT active? Check if a JIT request is needed
+az security jit-policy show \
+    --name default \
+    --resource-group rg-prod \
+    --vm vm-app-01
+
+# Step 3: Try Serial Console for direct OS access
+# Portal → VM → Help → Serial Console
+# In Windows SAC:
+#   SAC> cmd
+#   SAC> ch -si 1
+#   C:\> net start TermService   (restart RDP service)
+#   C:\> netsh advfirewall show allprofiles state
+```
+
+
+---
+
 
 
