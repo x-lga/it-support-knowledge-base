@@ -57,3 +57,17 @@ Conditional Access tab:
     - Require terms of use acceptance (user has not accepted ToU)
 ```
 
+---
+
+## Step 2 - Match the Block Reason to the Resolution
+
+| CA Grant Control That Failed | L1 Resolution Path |
+|-----------------------------|-------------------|
+| Require MFA - not satisfied | Guide user through MFA setup (Authenticator app). If user lost their phone: follow MFA reset procedure, verify identity first. |
+| Require compliant device | Check Intune compliance status for this device. If device is Non-Compliant: identify which setting is failing (Settings → Accounts → Access work or school → Info → Sync, then Intune portal → Device). |
+| Require Entra ID joined device | The device is not joined to Entra ID. Options: join the device (Settings → Accounts → Access work or school → Connect) or request an exemption from IT admin. |
+| Require approved client app | User is attempting to access from a browser or app not on the approved list. Guide them to use the Microsoft 365 apps or Outlook mobile. |
+| Compliant network location | Sign-in is from an IP not in the Named Locations list. Common cause: user on a new VPN exit node or working from a coffee shop. Escalate to L2 to add location or create exemption. |
+| User risk too high | Entra ID Identity Protection has flagged this account as high risk. This requires L2 Security involvement - do NOT attempt to clear the risk flag at L1. |
+
+---
