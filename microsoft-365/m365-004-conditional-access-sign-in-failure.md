@@ -71,3 +71,33 @@ Conditional Access tab:
 | User risk too high | Entra ID Identity Protection has flagged this account as high risk. This requires L2 Security involvement - do NOT attempt to clear the risk flag at L1. |
 
 ---
+
+## Step 3 - Escalation Package for CA Blocks
+
+When you cannot resolve at L1 (device join required, location not permitted,
+user risk flag), provide L2 with:
+
+```
+CA BLOCK ESCALATION
+══════════════════════════════════════════════════
+User UPN      :
+Sign-in time  :
+Application   : (what were they trying to access)
+Device name   : (from sign-in log)
+Device ID     : (from sign-in log — GUID)
+Client IP     : (from sign-in log)
+──────────────────────────────────────────────────
+Blocking policy    : (name of the CA policy)
+Failed grant control: (which control failed)
+User risk level    : (Low / Medium / High — from sign-in log)
+Device compliance  : (Compliant / Not Compliant / Unknown — from Intune)
+──────────────────────────────────────────────────
+Business justification:
+  [Why does this user need access from this device/location?]
+  [Is this a new device? Travelling? Remote working from new location?]
+══════════════════════════════════════════════════
+```
+
+
+---
+
