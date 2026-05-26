@@ -36,5 +36,22 @@ access token automatically.
 
 ---
 
+## Step 1 - Check the Sign-In Log for Token-Related Failures
+
+```
+Azure Portal → Entra ID → Sign-in Logs →
+  Filter by application name and status = Failure
+
+Key error codes for token/consent issues:
+  AADSTS65001  — User has not consented to use the app
+  AADSTS65004  — User declined to consent
+  AADSTS70008  — Token request expired
+  AADSTS70011  — Scope (permission) requested is invalid for this app
+  AADSTS70043  — Refresh token has expired
+  AADSTS700082 — Refresh token was revoked (admin ran Revoke Sessions)
+  AADSTS90094  — Admin consent required (app needs admin-level permissions)
+```
+
+---
 
 
