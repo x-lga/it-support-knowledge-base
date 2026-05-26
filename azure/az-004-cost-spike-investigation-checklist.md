@@ -83,4 +83,15 @@ az resource list \
     --output table
 ```
 
+**Category 3: Data transfer or egress**
+```
+Azure Portal → Storage Account → [Account] → Monitoring → Metrics
+  Metric: Egress
+  Timeframe: Last 30 days, daily granularity
+  Look for: Sudden spike in outbound data
+
+  If spike is on a Blob account: check for unexpected large file reads
+  If spike is on outbound bandwidth: check VM Network Out metrics
+```
+
 
