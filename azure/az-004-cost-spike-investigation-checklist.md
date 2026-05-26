@@ -75,4 +75,12 @@ az sql mi list --query "[].{Name:name,Tier:sku.tier,vCores:vCores,RG:resourceGro
 # Look for resources not in the expected list — something unexpected running
 ```
 
+**Category 2: New resource deployed unexpectedly**
+```bash
+# List resources created in the last 7 days
+az resource list \
+    --query "[?createdTime>='2026-07-07'].{Name:name,Type:type,RG:resourceGroup,Created:createdTime}" \
+    --output table
+```
+
 
