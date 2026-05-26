@@ -22,3 +22,29 @@ Azure Backup failure codes fall into three categories:
 
 ---
 
+## Step 1 - Identify the Error Code
+
+```
+Azure Portal → Recovery Services Vault → [Vault Name] →
+  Backup Jobs → Failed
+
+Click the failed job to see:
+  Error code : e.g., UserErrorGuestAgentStatusUnavailable
+  Error message: Plain language explanation
+  Recommended action: What Microsoft suggests
+```
+
+**Most common error codes and their causes:**
+
+| Error Code | Cause | Resolution |
+|-----------|-------|-----------|
+| `UserErrorGuestAgentStatusUnavailable` | Azure Guest Agent is stopped or not communicating | Restart the Azure Guest Agent service on the VM |
+| `UserErrorVmNotInDesiredState` | VM is deallocated (stopped) | Start the VM before backup runs, or configure backup to work with deallocated VMs |
+| `ExtensionOperationFailed` | Backup extension encountered an error | Check VM extension health; reinstall backup extension |
+| `UserErrorUnsupportedDiskSizeForSnapshot` | Disk size exceeds the snapshot limit | Check disk size; Premium disks > 4 TB have specific requirements |
+| `BackupOperationFailed` | Generic failure | Check VSS writer status on the VM |
+| `UserErrorDiskIsNot512AndIsBeingConverted` | Disk is being converted (sector size change) | Wait for disk conversion to complete; retry backup |
+
+---
+
+
