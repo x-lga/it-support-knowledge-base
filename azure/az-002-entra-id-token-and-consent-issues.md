@@ -19,3 +19,13 @@ login prompts again") and the cause is invisible to the user.
 Understanding the token landscape prevents both misdiagnosis and over-reaction
 (revoking all sessions when only an access token needs refreshing).
 
+**Token types and their default lifetimes:**
+
+| Token Type | Default Lifetime | What It Does |
+|-----------|-----------------|-------------|
+| Access token | 1 hour | Authorises API calls - short-lived by design |
+| Refresh token | 90 days (users), 24 hours (clients) | Used to get new access tokens silently |
+| ID token | 1 hour | Contains user identity claims - used by the app to know who the user is |
+| Session cookie (SSO) | Configurable - default "Until browser closed" | Browser-based SSO state |
+
+
