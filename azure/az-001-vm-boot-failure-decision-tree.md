@@ -7,3 +7,13 @@
 **Last verified:** 2026-07
 
 ---
+
+## Why a Decision Tree Works Better Than a Linear Procedure
+
+Azure VM boot failures have four distinct root causes that require completely
+different resolution paths. Running through a linear procedure wastes time because
+you apply steps for root cause A when the problem is actually root cause B.
+The decision tree routes you to the correct path in under 5 minutes.
+
+---
+
