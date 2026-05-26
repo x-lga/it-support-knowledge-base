@@ -23,3 +23,28 @@ being placed in a guest VLAN or dropped entirely.
 
 ---
 
+## Step 1 - Identify Whether 802.1X Is the Cause
+
+```powershell
+# On the affected Windows machine:
+# Check if 802.1X authentication is failing (not just missing IP)
+Get-EventLog -LogName System -Source "Microsoft-Windows-Wired-AutoConfig",
+    "Microsoft-Windows-Wireless-AutoConfig" -Newest 20 |
+    Select-Object TimeGenerated, Source, EventID, Message |
+    Format-List
+
+# Event IDs for 802.1X failure:
+# 15513 — Authentication failed (generic)
+# 15514 — Supplicant authentication timed out
+# 15519 — RADIUS server unreachable
+# 15508 — Certificate validation failed (machine certificate)
+
+# Check what VLAN the machine is on (if placed in guest VLAN, access is restricted)
+Get-NetIPConfiguration | Select-Object InterfaceAlias, IPv4Address, IPv4DefaultGateway
+# If IP starts with 169.254.x.x: DHCP failed — port likely blocked
+# If IP is in a restricted range (e.g., 10.99.x.x when corporate is 10.10.x.x): guest VLAN
+```
+
+---
+
+
