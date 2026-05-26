@@ -26,3 +26,34 @@ determine whether the user should legitimately have access from this context,
 and either guide the user to a compliant path or escalate with complete information.
 
 ---
+
+## Step 1 - Read the Sign-In Log
+
+```
+Azure Portal → Entra ID → Monitoring → Sign-in Logs →
+  Filter:
+    User    : [username]
+    Status  : Failure
+    Date    : Last 24 hours
+
+Click the failed entry. Key fields:
+
+Basic Info tab:
+  Status         : Failure
+  Failure reason : "Access has been blocked by Conditional Access policies"
+  Error code     : 53003 (CA block) or 50097 (MFA required) or 70011 (app scope)
+
+Conditional Access tab:
+  Policy name    : [Which policy applied]
+  Result         : Success / Failure / Not Applied / Report-only
+
+  For each policy listed:
+  If Result = Failure → THIS is the blocking policy
+  Expand it to see which grant control failed:
+    - Require MFA (user did not complete MFA)
+    - Require compliant device (device not marked Compliant in Intune)
+    - Require Entra ID joined device (device not joined)
+    - Require approved client app (sign-in from unapproved application)
+    - Require terms of use acceptance (user has not accepted ToU)
+```
+
