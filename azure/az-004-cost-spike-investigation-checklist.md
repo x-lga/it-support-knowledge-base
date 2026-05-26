@@ -60,4 +60,19 @@ az monitor activity-log list \
     --output table | head -50
 ```
 
+---
+
+### Step 3 - Category-Specific Investigation
+
+**Category 1: Resource left running**
+```bash
+# List all running VMs and their SKUs
+az vm list --query "[?powerState!='deallocated'].{Name:name,Size:hardwareProfile.vmSize,RG:resourceGroup}" -o table
+
+# List all SQL MI instances
+az sql mi list --query "[].{Name:name,Tier:sku.tier,vCores:vCores,RG:resourceGroup}" -o table
+
+# Look for resources not in the expected list — something unexpected running
+```
+
 
