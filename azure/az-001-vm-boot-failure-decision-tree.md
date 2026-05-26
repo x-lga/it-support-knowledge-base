@@ -86,4 +86,21 @@ az vm list-skus --location uksouth \
 
 ---
 
+## Path B - Boot Diagnostics Shows OS-Level Issue
+
+```bash
+# Pull the Boot Diagnostics screenshot via CLI
+az vm boot-diagnostics get-boot-log \
+    --resource-group rg-prod \
+    --name vm-app-01
+
+# Or view the screenshot in the portal:
+# VM → Help → Boot Diagnostics → Screenshot
+
+# Access Serial Console (OS-level terminal without network)
+# Portal → VM → Help → Serial Console
+# This works even when the VM is not reachable via RDP/SSH
+```
+
+
 
