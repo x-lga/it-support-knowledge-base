@@ -28,4 +28,13 @@ Understanding the token landscape prevents both misdiagnosis and over-reaction
 | ID token | 1 hour | Contains user identity claims - used by the app to know who the user is |
 | Session cookie (SSO) | Configurable - default "Until browser closed" | Browser-based SSO state |
 
+**Why users suddenly get re-auth prompts:**
+Usually because the refresh token expired (90-day window of inactivity) or
+was explicitly revoked (Revoke Sessions action in Entra ID). The access token
+expiring every hour is silent - the app uses the refresh token to get a new
+access token automatically.
+
+---
+
+
 
