@@ -45,3 +45,28 @@ Get-DhcpServerv4Scope | ForEach-Object {
 ```
 
 ---
+
+## Step 2 - Emergency Response - Free Up Leases
+
+```powershell
+# Find stale leases (devices not seen recently)
+$Scope    = "10.10.10.0"
+$StaleDay = (Get-Date).AddDays(-7)
+
+# List leases where the device has not communicated recently
+$StaleLeases = Get-DhcpServerv4Lease -ScopeId $Scope |
+    Where-Object {
+        $_.LeaseExpiryTime -gt (Get-Date) -and   # Not expired
+        $_.HostName -eq ""                        # No hostname resolved = likely stale
+    }
+
+Write-Host "Potentially stale leases: $($StaleLeases.Count)"
+$StaleLeases | Select-Object IPAddress, ClientId, LeaseExpiryTime | Format-Table
+
+# Remove a specific stale lease to free the IP
+# WARNING: Only remove leases for devices confirmed offline
+Remove-DhcpServerv4Lease -ScopeId $Scope -ClientId "aa-bb-cc-dd-ee-ff"
+```
+
+---
+
