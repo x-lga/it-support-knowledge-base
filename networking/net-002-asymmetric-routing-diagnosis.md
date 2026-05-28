@@ -27,3 +27,24 @@ initial SYN-ACK.
 
 ---
 
+## Step 1 - Identify Asymmetric Routing with Traceroute
+
+```powershell
+# Forward path: from the client to the destination
+tracert -d 192.168.5.10   # Replace with the destination IP
+# Note the hops, especially the first 3
+
+# Reverse path: requires running traceroute FROM the destination back
+# SSH or RDP to the destination machine and run:
+tracert -d [client IP]
+# Compare the hops — if they are different routes, routing is asymmetric
+```
+
+**Reading the output:**
+If forward path goes: Client → Router A → ISP1 → Destination
+And return path goes: Destination → Router B → ISP2 → Client
+Then any stateful firewall in Router A or Router B's path will see
+only half of the connection.
+
+---
+
