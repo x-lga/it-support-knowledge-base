@@ -70,3 +70,36 @@ Remove-DhcpServerv4Lease -ScopeId $Scope -ClientId "aa-bb-cc-dd-ee-ff"
 
 ---
 
+## Step 3 - Expand the Scope (Requires Change Authorisation)
+
+Expanding a DHCP scope is a network change and requires a Change ticket:
+
+```powershell
+# Current scope: 10.10.10.100 – 10.10.10.200 (100 addresses)
+# Expand to: 10.10.10.100 – 10.10.10.250 (150 addresses)
+# PREREQUISITE: The expanded range must be within the subnet and not in use as statics
+
+# Check no devices are using the IPs in the new range first
+$NewRangeStart = "10.10.10.201"
+$NewRangeEnd   = "10.10.10.250"
+# Ping sweep to verify range is empty:
+201..250 | ForEach-Object {
+    $IP = "10.10.10.$_"
+    if (Test-Connection $IP -Count 1 -Quiet -TimeoutSeconds 1) {
+        Write-Host "$IP is RESPONDING — do NOT include in DHCP range" -ForegroundColor Red
+    }
+}
+
+# Expand the scope
+Set-DhcpServerv4Scope `
+    -ScopeId      "10.10.10.0" `
+    -EndRange     "10.10.10.250"
+
+# Verify
+Get-DhcpServerv4Scope -ScopeId "10.10.10.0" | Select-Object StartRange, EndRange
+```
+
+
+---
+
+
