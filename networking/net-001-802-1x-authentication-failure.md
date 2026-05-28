@@ -47,4 +47,23 @@ Get-NetIPConfiguration | Select-Object InterfaceAlias, IPv4Address, IPv4DefaultG
 
 ---
 
+## Step 2 - Common Failure Scenarios and Resolution
+
+**Scenario A - Machine certificate expired or missing:**
+802.1X in enterprise environments typically uses machine certificates for
+authentication. If the certificate expired or was not renewed (due to offline
+machine or certificate policy issue):
+
+```powershell
+# Check the machine's computer certificate store for a valid certificate
+Get-ChildItem -Path "Cert:\LocalMachine\My" |
+    Where-Object { $_.EnhancedKeyUsageList.FriendlyName -contains "Client Authentication" } |
+    Select-Object Subject, NotAfter, Thumbprint
+
+# A missing or expired certificate here = 802.1X will fail
+# Resolution: re-enroll the certificate via GPO or certlm.msc → Enroll
+# If offline: temporarily bypass 802.1X (connect via a non-802.1X port for enrollment)
+```
+
+
 
