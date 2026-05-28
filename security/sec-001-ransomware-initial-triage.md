@@ -23,3 +23,11 @@ Disconnect the ethernet cable and disable WiFi. Every second of network
 connectivity allows the ransomware to spread laterally, encrypt more files,
 or exfiltrate data. Isolation stops the spread. Power-off destroys evidence.
 
+**Rule 3: Call L2 Security by voice before doing anything further.**
+Ransomware is a P1 that requires a security incident response, not a support
+ticket. Your role is to isolate and report, not to investigate and remediate
+independently. Attempting remediation without L2 involvement frequently makes
+the situation worse - recovery tools run against the wrong strain, encryption
+spreads further, or forensic evidence is destroyed.
+
+---
