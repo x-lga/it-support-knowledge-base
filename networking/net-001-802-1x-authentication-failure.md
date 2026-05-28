@@ -104,9 +104,9 @@ Key Event IDs:
 Event 6273 Reason Codes:
   16 = Authentication failed due to user credentials
   23 = Authentication rejected by reason of NPS policy
-  48 = Authentication failed — certificate revoked
+  48 = Authentication failed - certificate revoked
   49 = Supplicant EAP type not permitted
-  66 = Authentication failed — user account disabled
+  66 = Authentication failed - user account disabled
 ```
 
 
