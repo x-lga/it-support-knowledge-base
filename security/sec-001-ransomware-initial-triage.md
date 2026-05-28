@@ -31,3 +31,16 @@ the situation worse - recovery tools run against the wrong strain, encryption
 spreads further, or forensic evidence is destroyed.
 
 ---
+
+## Signs That This Is Ransomware (Not General Malware)
+
+| Indicator | Description |
+|-----------|-------------|
+| File extensions changed | Documents renamed to .locky, .wcry, .encrypted, .XXXX, etc. |
+| Ransom note files | README.txt, !!! YOUR FILES ARE ENCRYPTED !!!.txt, DECRYPT_INSTRUCTIONS.html |
+| Desktop background changed | Replaced with ransom demand image |
+| Many files modified at same time | File system shows thousands of files modified in the last few minutes |
+| Applications crashing | Applications cannot open files because data files are encrypted |
+| "Shadow copies deleted" in Event Log | Event 524 (VSS) or command `vssadmin delete shadows` in Security log |
+
+---
