@@ -49,18 +49,18 @@ spreads further, or forensic evidence is destroyed.
 
 ```
 1. PHYSICALLY disconnect the ethernet cable from the affected machine
-   (Do not use software disconnect — malware may prevent it)
+   (Do not use software disconnect - malware may prevent it)
 
 2. DISABLE WiFi (toggle the physical WiFi switch if present, or Fn+WiFi key)
 
-3. CALL L2 Security by phone — do not wait for a ticket response
+3. CALL L2 Security by phone - do not wait for a ticket response
    State: "I have a suspected ransomware infection on [machine name].
           I have isolated it from the network. I need you now."
 
 4. DO NOT:
    - Run antivirus scans (may delete files needed for recovery)
    - Attempt to decrypt files yourself
-   - Pay the ransom (escalation decision — not L1)
+   - Pay the ransom (escalation decision - not L1)
    - Restart or shut down
    - Connect the machine to any other network
    - Copy encrypted files to a USB drive (spreads the infection)
@@ -69,9 +69,33 @@ spreads further, or forensic evidence is destroyed.
    - Machine name and user
    - Exact time the user noticed and/or the time file modification timestamps show
    - What the user was doing (email attachment, browser download, USB?)
-   - Any ransom note text or filename (photograph with phone — do not email)
+   - Any ransom note text or filename (photograph with phone - do not email)
    - Which file types appear to be affected
    - Are any other machines showing similar symptoms?
 ```
 
 ---
+
+## Identification (For L2 Reference - L1 Should Not Act on This Alone)
+
+Once L2 has taken over, identification of the ransomware strain determines
+whether decryptors exist:
+
+```
+No More Ransom Project: https://www.nomoreransom.org
+  Upload a ransom note or sample encrypted file
+  The tool identifies the strain and provides decryptors if available
+
+ID Ransomware: https://id-ransomware.malwarehunterteam.com
+  Upload encrypted file or ransom note
+  Returns strain identification
+```
+
+**Why strain identification matters before any remediation:**
+Some ransomware strains encrypt with known-weak keys and free decryptors exist.
+Running remediation before identification destroys the encrypted files before
+the decryptor can recover them. Identification first, remediation second.
+
+
+---
+
