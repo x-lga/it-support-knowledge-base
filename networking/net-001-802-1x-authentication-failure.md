@@ -65,5 +65,14 @@ Get-ChildItem -Path "Cert:\LocalMachine\My" |
 # If offline: temporarily bypass 802.1X (connect via a non-802.1X port for enrollment)
 ```
 
+**Scenario B - NPS/RADIUS server unreachable:**
+```powershell
+# Test reachability of RADIUS server(s)
+Test-NetConnection -ComputerName "nps01.contoso.local" -Port 1812   # RADIUS auth
+Test-NetConnection -ComputerName "nps01.contoso.local" -Port 1813   # RADIUS accounting
+
+# If unreachable: check NPS service on the server
+# Get-Service -Name "IAS" -ComputerName nps01 | Select-Object Status
+```
 
 
