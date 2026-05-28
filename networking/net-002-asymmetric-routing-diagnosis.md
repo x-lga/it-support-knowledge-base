@@ -68,3 +68,18 @@ az network nic show-effective-route-table \
 ```
 
 ---
+
+## Resolving Asymmetric Routing
+
+The resolution is always the same: ensure outbound and return traffic use the
+same path through the stateful device. This means either:
+1. Routing both flows through the same firewall (preferred)
+2. Disabling stateful inspection on the affected interface
+3. Adding static routes to force symmetric traffic
+
+In Azure: ensure UDRs are applied to ALL subnets that communicate, not just
+some of them. A missing UDR on the return-path subnet is the most common cause.
+
+
+---
+
