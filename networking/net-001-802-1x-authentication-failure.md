@@ -75,4 +75,16 @@ Test-NetConnection -ComputerName "nps01.contoso.local" -Port 1813   # RADIUS acc
 # Get-Service -Name "IAS" -ComputerName nps01 | Select-Object Status
 ```
 
+**Scenario C - Wrong 802.1X profile configured:**
+```powershell
+# List wired 802.1X profiles configured on this machine
+netsh lan show profiles
+
+# Delete an incorrect profile and let it be re-applied via GPO
+netsh lan delete profile interface="Ethernet"
+gpupdate /force
+```
+
+---
+
 
