@@ -20,3 +20,28 @@ These are different issues with similar symptoms. Distinguish quickly:
 | Leases report shows available? | N/A | 0 available |
 
 ---
+
+## Step 1 - Check Scope Utilisation
+
+```powershell
+# On the DHCP server
+Import-Module DHCPServer
+
+# Check all scopes and their utilisation
+Get-DhcpServerv4Scope | ForEach-Object {
+    $Stats = Get-DhcpServerv4ScopeStatistics -ScopeId $_.ScopeId
+    [PSCustomObject]@{
+        ScopeId     = $_.ScopeId
+        Name        = $_.Name
+        Total       = $Stats.TotalAddresses
+        InUse       = $Stats.AddressesInUse
+        Available   = $Stats.AddressesFree
+        PctUsed     = [math]::Round(($Stats.AddressesInUse / $Stats.TotalAddresses) * 100, 1)
+    }
+} | Format-Table -AutoSize
+
+# Critical: Any scope at 90%+ needs immediate attention
+# At 100%: new devices cannot join the network
+```
+
+---
