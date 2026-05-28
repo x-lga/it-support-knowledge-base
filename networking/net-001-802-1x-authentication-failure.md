@@ -88,3 +88,28 @@ gpupdate /force
 ---
 
 
+## Step 3 - RADIUS Server Logs (NPS Event Log)
+
+The most complete diagnosis comes from the NPS server itself:
+
+```
+On the NPS server → Event Viewer →
+  Custom Views → Server Roles → Network Policy and Access Services
+
+Key Event IDs:
+  6272 = Authentication succeeded (baseline — shows what good looks like)
+  6273 = Authentication failed (reason code in the message)
+  6274 = Authentication request discarded (malformed or unknown client)
+
+Event 6273 Reason Codes:
+  16 = Authentication failed due to user credentials
+  23 = Authentication rejected by reason of NPS policy
+  48 = Authentication failed — certificate revoked
+  49 = Supplicant EAP type not permitted
+  66 = Authentication failed — user account disabled
+```
+
+
+---
+
+
