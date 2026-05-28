@@ -44,3 +44,34 @@ spreads further, or forensic evidence is destroyed.
 | "Shadow copies deleted" in Event Log | Event 524 (VSS) or command `vssadmin delete shadows` in Security log |
 
 ---
+
+## Immediate Actions (L1 Scope - Do These in Order)
+
+```
+1. PHYSICALLY disconnect the ethernet cable from the affected machine
+   (Do not use software disconnect — malware may prevent it)
+
+2. DISABLE WiFi (toggle the physical WiFi switch if present, or Fn+WiFi key)
+
+3. CALL L2 Security by phone — do not wait for a ticket response
+   State: "I have a suspected ransomware infection on [machine name].
+          I have isolated it from the network. I need you now."
+
+4. DO NOT:
+   - Run antivirus scans (may delete files needed for recovery)
+   - Attempt to decrypt files yourself
+   - Pay the ransom (escalation decision — not L1)
+   - Restart or shut down
+   - Connect the machine to any other network
+   - Copy encrypted files to a USB drive (spreads the infection)
+
+5. DOCUMENT while waiting for L2:
+   - Machine name and user
+   - Exact time the user noticed and/or the time file modification timestamps show
+   - What the user was doing (email attachment, browser download, USB?)
+   - Any ransom note text or filename (photograph with phone — do not email)
+   - Which file types appear to be affected
+   - Are any other machines showing similar symptoms?
+```
+
+---
