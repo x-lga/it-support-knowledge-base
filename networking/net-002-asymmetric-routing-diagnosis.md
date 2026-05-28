@@ -48,3 +48,23 @@ only half of the connection.
 
 ---
 
+## Step 2 - Identify Asymmetric Routing in an Azure Hybrid Environment
+
+In Azure with forced tunnelling (user-defined routes sending all traffic to
+an NVA or Azure Firewall), asymmetric routing is a common misconfiguration:
+
+```bash
+# Check effective routes for a VM's NIC
+az network nic show-effective-route-table \
+    --resource-group rg-prod \
+    --name nic-app-vm-01 \
+    --output table
+
+# Look for:
+#   0.0.0.0/0 → VirtualAppliance (Azure Firewall IP) — expected if forced tunnelling
+#   But also check: does the return path from the Firewall go back through the same path?
+#   If the Firewall has a route sending return traffic directly (bypassing the NVA):
+#   asymmetric routing is occurring
+```
+
+---
