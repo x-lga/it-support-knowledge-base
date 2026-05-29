@@ -88,3 +88,12 @@ Get-WinEvent -LogName "Microsoft-Windows-DriverFrameworks-UserMode/Operational" 
 | New cloud sync tools installed | Dropbox, Google Drive, or a personal sync client installed on a work machine | Shadow IT exfiltration path |
 
 ---
+
+## L1 Action When an Indicator Is Observed
+
+**What to do:**
+1. Document everything - exact timestamps, what was observed, where you saw it
+2. Do NOT alert the employee or manager
+3. Do NOT access the employee's files or email beyond what is needed to document
+4. Raise a confidential ticket to L2 Security with all documentation attached
+5. Follow L2 Security's instructions - do not take any further independent action
