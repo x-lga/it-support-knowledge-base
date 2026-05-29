@@ -97,3 +97,16 @@ Get-WinEvent -LogName "Microsoft-Windows-DriverFrameworks-UserMode/Operational" 
 3. Do NOT access the employee's files or email beyond what is needed to document
 4. Raise a confidential ticket to L2 Security with all documentation attached
 5. Follow L2 Security's instructions - do not take any further independent action
+
+
+**What not to do:**
+Do not discuss the observation with colleagues. Do not mention it to the employee's
+manager unless explicitly instructed by L2 Security. Insider threat investigations
+require confidentiality - premature disclosure allows the subject to destroy evidence.
+
+The L1 engineer's role is observation and documentation. Investigation and response
+belongs to L2 Security and HR.
+
+
+---
+
