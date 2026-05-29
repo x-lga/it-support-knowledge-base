@@ -163,5 +163,14 @@ cat /etc/fstab
 
 ---
 
+## Known Edge Cases
+
+**ext4 journal replay vs full fsck:**
+After an unclean shutdown, ext4 replays the journal automatically on the next
+mount. This is not the same as fsck. Journal replay fixes metadata that was
+mid-write. fsck checks the entire filesystem structure. If journal replay
+completes but applications still report I/O errors, run a full fsck.
+
+
 
 
