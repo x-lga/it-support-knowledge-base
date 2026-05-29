@@ -57,3 +57,31 @@ journalctl -u nginx.service -b --no-pager
 
 ---
 
+## Step 2 - Trace the Dependency Chain
+
+```bash
+# Show what a service depends on (what must be running before it starts)
+systemctl list-dependencies nginx.service
+# Tree view showing all dependencies with their current state
+# Red = failed, green = active, white = inactive
+
+# Show what depends on a service (what will fail if this service fails)
+systemctl list-dependencies nginx.service --reverse
+# This is critical when a shared service (like database or network) fails
+# It shows every service that will be affected
+
+# Show the full unit file including all directives
+systemctl cat nginx.service
+# Look at: Requires=, Wants=, After=, Before=, BindsTo=
+# These tell you the exact dependency model
+
+# Check the ordering: does nginx start AFTER the network is actually ready?
+# Difference between network.target and network-online.target:
+#   network.target      = network interfaces are UP (may not have IP yet)
+#   network-online.target = network is fully configured and reachable
+# A service needing to reach a database must use network-online.target, not network.target
+```
+
+---
+
+
