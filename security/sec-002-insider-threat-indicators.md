@@ -64,3 +64,15 @@ EmailEvents
 | where TotalAttachments > 20
 | order by TotalAttachments desc
 ```
+
+**USB/removable device usage:**
+```powershell
+# Windows Event Log — check for removable storage insertions
+# Requires USB storage auditing via GPO
+Get-WinEvent -LogName "Microsoft-Windows-DriverFrameworks-UserMode/Operational" |
+    Where-Object { $_.Id -eq 2003 -or $_.Id -eq 2100 } |
+    Select-Object TimeCreated, Message |
+    Select-Object -First 20
+```
+
+---
