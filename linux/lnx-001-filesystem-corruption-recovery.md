@@ -116,5 +116,25 @@ sudo umount /mnt
 
 ---
 
+## Step 4 - Recover Specific Files Using testdisk / photorec
+
+When fsck completes but specific files are missing or inaccessible:
+
+```bash
+# Install testdisk (includes photorec for file recovery)
+sudo apt install testdisk
+
+# Run testdisk to recover deleted or lost partitions
+sudo testdisk /dev/sda
+# Interactive menu: Analyse → Quick Search → found partitions → Write
+
+# Run photorec for file-level recovery (recovers by file signature, not filesystem)
+sudo photorec /dev/sda1
+# Choose destination directory on a DIFFERENT disk — never recover to the same disk
+# photorec ignores filenames (recovers by magic bytes) — best for photos, docs, PDFs
+```
+
+---
+
 
 
