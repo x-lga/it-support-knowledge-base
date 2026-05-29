@@ -50,4 +50,30 @@ openssl s_client -connect banking.contoso.com:443 </dev/null 2>&1 | \
 
 ---
 
+## Step 2 - Fix a Missing Intermediate Certificate
+
+The most common chain error is a server not including the intermediate CA
+certificate in its TLS configuration. The server presents only the leaf
+certificate, leaving clients to find the intermediate themselves.
+
+**For Azure Application Gateway:**
+```bash
+# Check current certificate configuration
+az network application-gateway ssl-cert list \
+    --gateway-name appgw-contoso-prod \
+    --resource-group rg-networking-prod \
+    --output table
+
+# Update with a full chain certificate (PFX with full chain)
+# The PFX must include: Leaf cert + Intermediate CA + Root CA (optional)
+# Clients who cannot find intermediary certs will fail without this
+
+az network application-gateway ssl-cert create \
+    --gateway-name appgw-contoso-prod \
+    --resource-group rg-networking-prod \
+    --name banking-cert-fullchain \
+    --cert-file ./banking-fullchain.pfx \
+    --cert-password "[pfx-password]"
+```
+
 
