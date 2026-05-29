@@ -23,3 +23,31 @@ and automated tools do not have this cache - they require the full chain.
 
 ---
 
+## Step 1 - Test the Certificate Chain from Multiple Perspectives
+
+```bash
+# Test from a Linux machine (uses the OS trust store — different from Windows)
+openssl s_client -connect banking.contoso.com:443 -showcerts
+
+# The output shows:
+# Certificate chain:
+# 0 s:/CN=banking.contoso.com         (Server certificate)
+#   i:/CN=Contoso Intermediate CA
+# 1 s:/CN=Contoso Intermediate CA     (Intermediate — should be here)
+#   i:/CN=Contoso Root CA
+# 2 s:/CN=Contoso Root CA             (Root — sometimes omitted)
+#   i:/CN=Contoso Root CA
+#
+# If only certificate 0 is shown: the server is not sending the full chain
+# This works in browsers (they cache the intermediate) but fails in API clients
+
+# Verify the chain validates correctly
+openssl s_client -connect banking.contoso.com:443 </dev/null 2>&1 | \
+    grep -E "Verify return code"
+# "Verify return code: 0 (ok)" = valid chain
+# "Verify return code: 21 (unable to verify the first certificate)" = broken chain
+```
+
+---
+
+
