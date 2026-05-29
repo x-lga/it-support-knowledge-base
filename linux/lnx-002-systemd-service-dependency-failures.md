@@ -28,3 +28,32 @@ starts fine manually but fails on boot" issues.
 
 ---
 
+## Step 1 - Identify the Failed Service and Its State
+
+```bash
+# Show all failed units — start here
+systemctl --failed
+# Output columns:
+#   UNIT    — service name
+#   LOAD    — Loaded (unit file found) or not-found
+#   ACTIVE  — failed / inactive / active
+#   SUB     — specific substates: failed, dead, running, exited
+#   DESCRIPTION
+
+# Get the full status of a specific failed service
+systemctl status nginx.service
+# Reads: Active state, exit code, last log lines, PID, memory, cgroup
+
+# Extended log output for the failed service (most useful for root cause)
+journalctl -u nginx.service -n 50 --no-pager
+# -u: unit filter
+# -n 50: last 50 lines
+# --no-pager: output everything without interactive paging (better for copy-paste)
+
+# Show logs since the last boot only (removes noise from previous sessions)
+journalctl -u nginx.service -b --no-pager
+# -b: current boot only
+```
+
+---
+
