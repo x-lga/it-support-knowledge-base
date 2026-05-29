@@ -187,6 +187,15 @@ and continue - the hardware needs to be investigated first.
 
 ---
 
+## Related Articles
+
+- LNX-002: systemd Service Dependency Failures (boot issues that are not filesystem-related)
+- LNX-003: High iowait Diagnosis (slow disk I/O that may precede filesystem issues)
+
+
+---
+
+
 
 
 
