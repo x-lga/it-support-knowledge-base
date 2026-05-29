@@ -48,3 +48,37 @@ df -T
 
 ---
 
+## Step 2 - Run fsck (Filesystem Check and Repair)
+
+**Important:** fsck must be run on an **unmounted** filesystem.
+If the filesystem is mounted, fsck will refuse to run or warn strongly against it.
+
+```bash
+# For ext4 filesystem — most common on Ubuntu/Debian systems
+sudo umount /dev/sda1
+# If unmounting fails because the filesystem is the root (/):
+# Reboot into recovery mode (hold Shift during boot → Advanced options →
+# Recovery mode → Root shell with read-only filesystem)
+# OR boot from a live USB and mount nothing — run fsck from there
+
+# Run fsck with automatic repair (-y answers YES to all repair prompts)
+# Use -y only when you understand the risks — it may delete orphaned inodes
+sudo fsck -y /dev/sda1
+
+# For more conservative repair that shows what it would do first:
+sudo fsck -n /dev/sda1    # Dry run — reports issues without fixing
+sudo fsck -p /dev/sda1    # Auto-repair only safe, unambiguous issues
+
+# For XFS filesystems (CentOS/RHEL default):
+sudo xfs_repair /dev/sda1
+# Note: xfs_repair requires the filesystem to be unmounted AND clean
+# If xfs_repair fails: try xfs_repair -L /dev/sda1 (zeroes the log — last resort)
+
+# Verify repair was successful
+sudo fsck -n /dev/sda1
+# If output shows "clean" with no errors: repair succeeded
+```
+
+---
+
+
