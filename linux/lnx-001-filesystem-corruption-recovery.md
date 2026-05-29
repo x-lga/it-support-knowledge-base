@@ -136,5 +136,32 @@ sudo photorec /dev/sda1
 
 ---
 
+## Step 5 - Prevent Future Corruption
+
+```bash
+# Check for scheduled filesystem checks (ext4)
+sudo tune2fs -l /dev/sda1 | grep -E "Mount count|Maximum mount count|Check interval"
+# Mount count: how many times mounted since last fsck
+# Maximum mount count: -1 means disabled (check by count is off by default on modern systems)
+# Modern ext4 relies on the journal — manual fsck scheduling is less necessary
+
+# Enable journal on an ext4 filesystem (should already be enabled)
+sudo tune2fs -l /dev/sda1 | grep "Filesystem features" | grep -c "has_journal"
+# Should return 1 — if 0: enable with sudo tune2fs -O has_journal /dev/sda1
+
+# For XFS — ensure journal is not disabled
+sudo xfs_info /dev/sda1 | grep "log"
+# Should show: log= with a block count — if log=0: XFS logging is disabled
+
+# Check /etc/fstab for correct options
+cat /etc/fstab
+# Each entry should have the pass (last column) set correctly:
+# Root filesystem (/): pass = 1
+# Other local filesystems: pass = 2
+# 0 means no fsck at boot — acceptable for network or removable filesystems
+```
+
+---
+
 
 
