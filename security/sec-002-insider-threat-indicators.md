@@ -76,3 +76,15 @@ Get-WinEvent -LogName "Microsoft-Windows-DriverFrameworks-UserMode/Operational" 
 ```
 
 ---
+
+## Behavioural Indicators an L1 Engineer Might Observe
+
+| Indicator | Example | Reason for Concern |
+|-----------|---------|-------------------|
+| Departing employee data access | User under notice accessing HR or financial files they do not normally touch | Pre-departure data collection |
+| After-hours login combined with file bulk access | Login at 22:00 followed by 500+ file downloads | Normal employees do not bulk-download at night |
+| Large email to personal address | 50 MB attachment sent to gmail.com from a work account | Exfiltration |
+| Forwarding rules set up | Inbox rules forwarding all email to an external address | Established email exfiltration |
+| New cloud sync tools installed | Dropbox, Google Drive, or a personal sync client installed on a work machine | Shadow IT exfiltration path |
+
+---
