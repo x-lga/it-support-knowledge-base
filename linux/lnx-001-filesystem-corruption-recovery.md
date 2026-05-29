@@ -24,3 +24,27 @@ losing more data during the repair than was lost in the original corruption.
 
 ---
 
+## Step 1 - Assess Disk Health Before Attempting Repair
+
+```bash
+# Check SMART status on all disks
+sudo smartctl -a /dev/sda
+# Look for: Reallocated_Sector_Ct (any non-zero value = bad sectors present)
+# Look for: Current_Pending_Sector (sectors with read errors awaiting reallocation)
+# Overall health line: "SMART overall-health self-assessment test result: PASSED"
+# or FAILED — FAILED means stop, escalate, restore from backup
+
+# If smartctl is not installed:
+sudo apt install smartmontools    # Debian/Ubuntu
+sudo yum install smartmontools    # RHEL/CentOS
+
+# Confirm which filesystem is on which partition before proceeding
+lsblk -f
+# Shows: NAME, FSTYPE, LABEL, UUID, MOUNTPOINT for every block device
+
+df -T
+# Shows: mounted filesystems with their type (ext4, xfs, btrfs, etc.)
+```
+
+---
+
