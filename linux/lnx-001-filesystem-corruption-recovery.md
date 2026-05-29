@@ -81,4 +81,40 @@ sudo fsck -n /dev/sda1
 
 ---
 
+## Step 3 - Recover from a System That Will Not Boot
+
+When the root filesystem itself is corrupt and the system cannot boot to a shell:
+
+```bash
+# OPTION A: Recovery mode (systems with GRUB)
+# 1. On boot, hold Shift (BIOS) or press Esc (UEFI) to show GRUB menu
+# 2. Select: Advanced options for Ubuntu → Recovery mode
+# 3. From recovery menu: select "root — Drop to root shell prompt"
+# 4. Remount root filesystem as read-write to run fsck:
+mount -o remount,ro /
+fsck -y /dev/sda1   # Replace with your root partition
+
+# OPTION B: Boot from live USB (more reliable for severe corruption)
+# 1. Boot from Ubuntu or Debian live USB
+# 2. Open terminal — do NOT mount the corrupted filesystem
+# 3. Identify the corrupted partition:
+lsblk -f
+# 4. Run fsck:
+sudo fsck -y /dev/sda1
+# 5. If successful, mount and verify:
+sudo mount /dev/sda1 /mnt
+ls /mnt   # Confirm directory structure looks intact
+sudo umount /mnt
+
+# OPTION C: Single-user mode (older RHEL/CentOS systems)
+# At GRUB menu: press 'e' to edit boot entry
+# Find the line starting with 'linux' — append: single
+# Press Ctrl+X to boot
+# System boots to single-user root shell
+# Run: fsck -y /dev/sda1
+```
+
+---
+
+
 
