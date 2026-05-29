@@ -51,3 +51,16 @@ CloudAppEvents
 | where DistinctFiles > 50   // Unusual volume of distinct files in 1 hour
 | order by DistinctFiles desc
 ```
+
+**Large outbound email with attachments:**
+```kql
+// M365 Defender — emails with large attachments sent by a specific user
+EmailEvents
+| where TimeGenerated > ago(7d)
+| where SenderFromAddress == "jsmith@contoso.com"
+| where AttachmentCount > 0
+| summarize EmailCount = count(), TotalAttachments = sum(AttachmentCount)
+    by SenderFromAddress, RecipientEmailAddress
+| where TotalAttachments > 20
+| order by TotalAttachments desc
+```
