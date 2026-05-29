@@ -172,5 +172,11 @@ mid-write. fsck checks the entire filesystem structure. If journal replay
 completes but applications still report I/O errors, run a full fsck.
 
 
+**btrfs corruption:**
+btrfs has its own repair tool and the procedure differs significantly from ext4.
+Do not run `fsck` on a btrfs filesystem - use `sudo btrfs check --repair /dev/sda1`.
+Running ext4 fsck on btrfs will make things dramatically worse.
+
+
 
 
