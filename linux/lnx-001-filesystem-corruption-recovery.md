@@ -178,5 +178,16 @@ Do not run `fsck` on a btrfs filesystem - use `sudo btrfs check --repair /dev/sd
 Running ext4 fsck on btrfs will make things dramatically worse.
 
 
+**Read-only filesystem mount after journal error:**
+If the filesystem remounts itself as read-only mid-operation (you see messages
+like "EXT4-fs error: remounting filesystem read-only"), this is the kernel
+protecting data from further corruption. It almost always means the disk has
+a hardware problem. Check SMART data immediately. Do not just remount read-write
+and continue - the hardware needs to be investigated first.
+
+---
+
+
+
 
 
