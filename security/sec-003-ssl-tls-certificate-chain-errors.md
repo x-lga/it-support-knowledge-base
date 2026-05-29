@@ -76,4 +76,27 @@ az network application-gateway ssl-cert create \
     --cert-password "[pfx-password]"
 ```
 
+**For IIS on Windows Server:**
+```powershell
+# Import the full chain PFX to the machine certificate store
+Import-PfxCertificate `
+    -FilePath "C:\Certs\banking-fullchain.pfx" `
+    -CertStoreLocation "Cert:\LocalMachine\My" `
+    -Password (ConvertTo-SecureString "[password]" -AsPlainText -Force)
+
+# Verify the chain is complete
+$Cert = Get-ChildItem "Cert:\LocalMachine\My" |
+    Where-Object { $_.Subject -like "*banking.contoso.com*" }
+
+$Chain = New-Object System.Security.Cryptography.X509Certificates.X509Chain
+$Chain.Build($Cert) | Out-Null
+$Chain.ChainElements | ForEach-Object {
+    Write-Host "$($_.Certificate.Subject)"
+    $_.ChainElementStatus | ForEach-Object { Write-Host "  Status: $($_.Status)" }
+}
+```
+
+
+---
+
 
