@@ -184,5 +184,13 @@ echo 'ACTION=="add|change", KERNEL=="sda", ATTR{queue/scheduler}="mq-deadline"' 
 
 ---
 
+## Step 5 - Resolution Summary and Escalation Criteria
+
+**Resolve at L1:**
+- Log file growing out of control: truncate, fix logrotate, restart the logging service
+- Backup job causing iowait: renice/ionice the backup process, reschedule to off-hours
+- Swap pressure from a known application: identify and restart the memory-leaking process
+
+
 
 
