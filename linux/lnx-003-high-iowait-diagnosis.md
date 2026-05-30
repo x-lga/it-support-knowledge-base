@@ -97,6 +97,24 @@ ls -lh /var/log/syslog*   # Should show rotated files (syslog.1, syslog.2.gz, et
 cat /etc/logrotate.d/rsyslog   # Check the rotation config
 ```
 
+**Cause 2 - Swap being used heavily (disk I/O is swap read/write):**
+
+```bash
+# Check swap usage
+free -h
+# If swap Used is significant: the system is short of RAM
+# Processes are being swapped to disk — this causes high iowait
+
+# Find which processes are using the most memory (causing swap pressure)
+ps aux --sort=-%mem | head -15
+
+# Check the swappiness setting (higher = more aggressive swapping)
+cat /proc/sys/vm/swappiness
+# Default is 60. For servers with plenty of RAM: set to 10
+# This makes the kernel prefer RAM over swap
+sudo sysctl vm.swappiness=10   # Immediate (resets on reboot)
+echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf   # Persistent
+```
 
 
 
