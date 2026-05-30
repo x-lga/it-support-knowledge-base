@@ -222,3 +222,12 @@ sudo systemctl mask problematic.service
 
 ---
 
+## Known Edge Cases
+
+**Override files not taking effect:**
+If you edit a service with `systemctl edit` and the changes do not take effect,
+verify that `systemctl daemon-reload` was run after editing, and that the override
+file at `/etc/systemd/system/servicename.service.d/override.conf` has correct syntax.
+Run `systemd-analyze verify /etc/systemd/system/servicename.service.d/override.conf`
+to check for syntax errors before reloading.
+
