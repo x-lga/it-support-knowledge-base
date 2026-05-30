@@ -162,3 +162,32 @@ systemctl show myapp.service | grep -E "Restart=|RestartSec="
 # Restart=always with RestartSec=0 means it restarts instantly — fills the journal
 # Consider: RestartSec=5 to add a 5-second delay between restarts
 ```
+
+---
+
+## Step 4 - System Fails to Reach Target (Boot Hangs or Emergency Shell)
+
+When the system boots to an emergency shell or hangs at boot with a timeout message:
+
+```bash
+# From the emergency shell, identify which unit failed to start
+systemctl --failed
+journalctl -xb   # Full boot log with explanatory annotations (-x flag)
+
+# Common boot blockers:
+# 1. /etc/fstab entry for a disk that does not exist or is not mounted
+#    Fix: boot from live USB, edit /etc/fstab, comment out the problematic line
+#    Add 'nofail' option to non-critical mounts: UUID=xxx /data ext4 defaults,nofail 0 2
+
+# 2. A service with WantedBy=multi-user.target that always fails
+#    Fix: disable the service temporarily
+#    systemctl disable --now myapp.service
+#    Then investigate and fix the service before re-enabling
+
+# 3. Network interface name changed (predictable interface names issue)
+#    Fix: check /etc/netplan/*.yaml or /etc/network/interfaces
+#    The interface name in the config must match the actual interface name
+ip link show   # Shows actual interface names
+```
+
+---
