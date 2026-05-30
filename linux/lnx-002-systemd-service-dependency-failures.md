@@ -84,4 +84,30 @@ systemctl cat nginx.service
 
 ---
 
+## Step 3 - Common Failure Patterns and Their Resolutions
+
+**Pattern 1 - Service fails because a dependency is not yet ready (race condition):**
+
+```bash
+# Symptom: Service starts fine manually but fails on boot
+# Diagnosis: Service starts before its dependency is fully ready
+systemctl show nginx.service | grep -E "After|Wants|Requires"
+# If After=network.target but the service tries to connect to a database:
+# the network may be up but DNS not yet resolving, or the DB server not yet accepting connections
+
+# Fix: Add network-online.target to the After= and Wants= directives
+# Edit the service unit file (override, not direct edit):
+sudo systemctl edit nginx.service
+# This creates /etc/systemd/system/nginx.service.d/override.conf
+# Add:
+[Unit]
+After=network-online.target
+Wants=network-online.target
+
+# Reload and test
+sudo systemctl daemon-reload
+sudo systemctl restart nginx.service
+sudo systemctl status nginx.service
+```
+
 
