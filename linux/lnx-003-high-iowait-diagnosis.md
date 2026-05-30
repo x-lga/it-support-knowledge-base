@@ -116,5 +116,21 @@ sudo sysctl vm.swappiness=10   # Immediate (resets on reboot)
 echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf   # Persistent
 ```
 
+**Cause 3 - Database performing a large query or index rebuild:**
+
+```bash
+# For MySQL/MariaDB — check active queries
+mysql -u root -p -e "SHOW PROCESSLIST\G" | grep -A5 "State: Copying\|State: Sorting\|State: Writing"
+# State: Copying to tmp table = large sort/join operation reading lots of data
+# State: Writing to net = slow client pulling large result set
+
+# For PostgreSQL — check active queries with I/O stats
+sudo -u postgres psql -c "
+SELECT pid, state, wait_event_type, wait_event, query
+FROM pg_stat_activity
+WHERE wait_event_type = 'IO'
+ORDER BY query_start;
+"
+```
 
 
