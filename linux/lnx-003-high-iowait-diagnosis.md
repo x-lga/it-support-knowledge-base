@@ -212,5 +212,14 @@ Any recent changes: new software installed, cron jobs added, disk replaced
 
 ---
 
+## Known Edge Cases
+
+**High iowait on a VM in Azure (or other cloud):**
+Cloud VMs share physical storage with other tenants. "Noisy neighbour" I/O
+contention can cause elevated iowait even when the VM itself is not doing
+anything. Check the Azure VM metric "OS Disk Queue Depth" in Azure Monitor —
+if the queue depth is 0 but iowait is high, the issue is at the hypervisor layer,
+not within the VM. Escalate to a cloud support ticket.
+
 
 
