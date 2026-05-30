@@ -191,6 +191,11 @@ echo 'ACTION=="add|change", KERNEL=="sda", ATTR{queue/scheduler}="mq-deadline"' 
 - Backup job causing iowait: renice/ionice the backup process, reschedule to off-hours
 - Swap pressure from a known application: identify and restart the memory-leaking process
 
+**Escalate to L2:**
+- iowait is high and the cause cannot be identified after Steps 2–3
+- SMART data shows disk errors (bad sectors, reallocated sectors, pending sectors)
+- `%util` on the device is 100% with no obvious single process causing it
+- iowait is consistently high across multiple reboots despite no identifiable process
 
 
 
