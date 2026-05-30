@@ -221,5 +221,16 @@ anything. Check the Azure VM metric "OS Disk Queue Depth" in Azure Monitor —
 if the queue depth is 0 but iowait is high, the issue is at the hypervisor layer,
 not within the VM. Escalate to a cloud support ticket.
 
+**iowait high but iotop shows nothing:**
+Kernel threads (kworker, kswapd) doing I/O do not always appear clearly in iotop.
+Use `sudo cat /proc/diskstats` and compare two snapshots 5 seconds apart to see
+raw I/O counters per disk. If writes are occurring but no process is visible,
+it may be journalling overhead or dirty page writeback - check `/proc/meminfo`
+for `Dirty:` value. A very high dirty page count means the kernel is flushing
+a large backlog to disk.
+
+
+---
+
 
 
