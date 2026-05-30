@@ -26,3 +26,31 @@ because it was waiting for the disk to respond. This matters because:
 
 ---
 
+## Step 1 - Confirm iowait Is the Issue
+
+```bash
+# Check current iowait percentage
+top
+# Press '1' to show per-CPU breakdown
+# Look at the 'wa' column in the CPU line:
+# %Cpu(s): 2.0 us, 0.5 sy, 0.0 ni, 55.0 id, 40.0 wa, 0.0 hi, 0.0 si, 0.0 st
+#                                              ^^^^^^ this is iowait
+# wa > 10% is elevated. wa > 25% is significant. wa > 50% is severe.
+
+# More precise iowait measurement with iostat
+iostat -x 2 5
+# -x: extended stats, 2: 2-second intervals, 5: 5 measurements
+# Key columns:
+#   %iowait  — CPU time waiting for I/O (same as 'wa' in top)
+#   %util    — percentage of time the device was busy (100% = device is saturated)
+#   await    — average time (ms) for I/O requests to complete
+#   svctm    — average service time (ms) — if much lower than await: queue is backing up
+#   r/s, w/s — reads and writes per second
+
+# If %util on a device is consistently 100%: the disk itself is the bottleneck
+# If await >> svctm: requests are queueing — disk cannot keep up with the rate
+```
+
+---
+
+
