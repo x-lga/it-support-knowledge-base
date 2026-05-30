@@ -231,3 +231,12 @@ file at `/etc/systemd/system/servicename.service.d/override.conf` has correct sy
 Run `systemd-analyze verify /etc/systemd/system/servicename.service.d/override.conf`
 to check for syntax errors before reloading.
 
+**Transient failures vs permanent failures:**
+systemd marks a service as failed only after it has exceeded its restart limit
+(default: start 5 times in 10 seconds). A service that fails once and restarts
+successfully is not shown in `systemctl --failed`. Use `journalctl -u servicename -b`
+to see all attempts including successful restarts — useful for catching intermittent
+failures before they become permanent.
+
+---
+
