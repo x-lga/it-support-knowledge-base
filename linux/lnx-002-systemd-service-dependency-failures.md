@@ -110,4 +110,29 @@ sudo systemctl restart nginx.service
 sudo systemctl status nginx.service
 ```
 
+**Pattern 2 - Service fails due to permission error on a file or socket:**
+
+```bash
+# Symptom: journalctl shows "Permission denied" on a specific file
+journalctl -u myapp.service -b | grep -i "permission\|denied\|EPERM\|EACCES"
+
+# Check the file permissions
+ls -la /var/run/myapp.sock
+ls -la /var/log/myapp/
+ls -la /etc/myapp/myapp.conf
+
+# Check what user the service runs as
+systemctl show myapp.service | grep "User\|Group"
+# If User=myapp, the service runs as the myapp user
+# The directories and files it accesses must be owned by or readable by that user
+
+# Fix ownership:
+sudo chown -R myapp:myapp /var/log/myapp/
+sudo chmod 750 /var/log/myapp/
+
+# For socket files created at runtime:
+# Check RuntimeDirectory in the unit file:
+systemctl cat myapp.service | grep RuntimeDirectory
+# RuntimeDirectory=myapp creates /run/myapp owned by the service user at start
+```
 
