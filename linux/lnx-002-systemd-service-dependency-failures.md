@@ -191,3 +191,34 @@ ip link show   # Shows actual interface names
 ```
 
 ---
+
+## Step 5 - Useful systemd Diagnostic Commands Reference
+
+```bash
+# Show the boot timeline — which services took longest to start
+systemd-analyze blame
+# Shows each service sorted by startup time — identify bottlenecks
+
+# Generate an SVG visualisation of the boot dependency chain
+systemd-analyze dot | dot -Tsvg > boot-dependencies.svg
+# Open the SVG in a browser to see the complete dependency graph visually
+
+# Show the critical chain — the sequence of units that determined total boot time
+systemd-analyze critical-chain
+
+# Check a unit file for syntax errors before reloading
+systemd-analyze verify /etc/systemd/system/myapp.service
+
+# Show all properties of a unit (comprehensive)
+systemctl show nginx.service | less
+
+# List all unit files and their enabled/disabled state
+systemctl list-unit-files --type=service | grep -v disabled | head -40
+
+# Mask a service (stronger than disable — prevents it from being started at all)
+sudo systemctl mask problematic.service
+# Unmask: sudo systemctl unmask problematic.service
+```
+
+---
+
