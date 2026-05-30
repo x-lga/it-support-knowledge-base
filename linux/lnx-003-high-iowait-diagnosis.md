@@ -79,5 +79,24 @@ sudo lsof -p [PID] | grep -E "REG|DIR"
 
 ---
 
+## Step 3 - Investigate Common Causes
+
+**Cause 1 - Log file growing out of control:**
+
+```bash
+# Find which log files are growing fastest
+sudo inotifywait -m /var/log -r -e close_write 2>/dev/null | head -30
+# Shows every file write in /var/log — the most frequently updated file is the problem
+
+# Check sizes of all log files
+du -sh /var/log/* | sort -rh | head -20
+
+# Check if logrotate is working
+ls -lh /var/log/syslog*   # Should show rotated files (syslog.1, syslog.2.gz, etc.)
+# If no rotated files exist: logrotate may not be configured for this log
+cat /etc/logrotate.d/rsyslog   # Check the rotation config
+```
+
+
 
 
