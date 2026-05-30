@@ -20,3 +20,16 @@ before publishing. Do not leave [placeholder] text in finished articles.
 
 ---
 
+## What This Article Covers
+
+[2-4 sentences maximum. Answer: what problem does this article help with, and why
+is this problem worth documenting? If this is a common ticket type, say so. If
+this is a difficult problem that gets misdiagnosed, explain what it gets confused
+with and why this article prevents that confusion.]
+
+[Do NOT repeat the title. Do NOT write "this article explains how to...". Start
+with the problem context, not with what the article does.]
+
+---
+
+
