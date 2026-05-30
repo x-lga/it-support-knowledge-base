@@ -32,4 +32,19 @@ with the problem context, not with what the article does.]
 
 ---
 
+## [Context Heading - Why This Is Harder Than It Looks / Common Misunderstandings]
+
+[This section provides the background knowledge that makes the diagnostic steps
+make sense. Every article should have one. Without this, the reader follows steps
+without understanding why - and cannot adapt when the steps do not match their
+specific situation.]
+
+[Examples of good context sections:
+- Explaining why a symptom is ambiguous (same symptom, multiple causes)
+- Explaining a technical concept that the diagnostic steps depend on
+- Describing what the correct resolution is NOT (common wrong approaches)
+- Providing a decision table or classification framework before the steps begin]
+
+---
+
 
