@@ -53,4 +53,31 @@ iostat -x 2 5
 
 ---
 
+## Step 2 - Identify Which Process Is Causing the I/O
+
+```bash
+# Method 1: iotop — shows per-process disk I/O in real time (most useful)
+sudo iotop -o -P
+# -o: only show processes that are actively doing I/O (reduces noise)
+# -P: show processes, not threads
+# Columns: TID, PRIO, USER, DISK READ, DISK WRITE, SWAPIN, IO>, COMMAND
+# Sort by DISK WRITE column — the top entry is your culprit
+
+# If iotop is not installed:
+sudo apt install iotop          # Debian/Ubuntu
+sudo yum install iotop          # RHEL/CentOS
+
+# Method 2: pidstat — per-process I/O statistics
+sudo pidstat -d 2 10
+# -d: disk I/O stats, 2: 2-second intervals, 10: 10 measurements
+# Shows: UID, PID, kB_rd/s (KB read/sec), kB_wr/s (KB write/sec), Command
+
+# Method 3: lsof for a specific process — which files is it reading/writing?
+sudo lsof -p [PID] | grep -E "REG|DIR"
+# Shows every file the process has open — identifies WHICH files are being accessed
+```
+
+---
+
+
 
