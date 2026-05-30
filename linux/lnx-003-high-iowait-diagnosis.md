@@ -198,4 +198,19 @@ echo 'ACTION=="add|change", KERNEL=="sda", ATTR{queue/scheduler}="mq-deadline"' 
 - iowait is consistently high across multiple reboots despite no identifiable process
 
 
+**Escalation package:**
+```
+Output of: iostat -x 2 5
+Output of: sudo iotop -o -P (5 second capture)
+Output of: sudo pidstat -d 2 5
+Output of: sudo smartctl -a /dev/[disk]
+Output of: free -h
+Output of: df -h
+Time of day and whether this is constant or periodic
+Any recent changes: new software installed, cron jobs added, disk replaced
+```
+
+---
+
+
 
