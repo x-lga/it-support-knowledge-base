@@ -133,4 +133,25 @@ ORDER BY query_start;
 "
 ```
 
+**Cause 4 - Backup job running (expected but impacting performance):**
+
+```bash
+# Check if a backup process is the cause
+sudo iotop -o | grep -E "rsync|tar|cp|dd|bacula|veeam|borg"
+
+# If a backup is running at an unexpected time or with unexpected intensity:
+# Check cron jobs
+sudo crontab -l
+crontab -l -u root
+cat /etc/cron.d/*
+
+# Limit backup I/O priority to reduce impact on other workloads
+# Using ionice — set the backup process to best-effort class 3 (lowest priority)
+sudo ionice -c 3 -p [backup-PID]
+# Or when starting a new backup job:
+ionice -c 3 rsync -av /data/ /backup/
+```
+
+---
+
 
