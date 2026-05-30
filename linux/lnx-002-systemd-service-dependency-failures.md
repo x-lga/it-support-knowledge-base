@@ -136,3 +136,29 @@ systemctl cat myapp.service | grep RuntimeDirectory
 # RuntimeDirectory=myapp creates /run/myapp owned by the service user at start
 ```
 
+**Pattern 3 - Service keeps restarting (restart loop):**
+
+```bash
+# Symptom: service shows "activating" repeatedly or Active: failed (Result: exit-code)
+systemctl status myapp.service
+# Check the restart counter
+systemctl show myapp.service | grep NRestarts
+
+# Check the ExecStart command actually exists and is executable
+systemctl cat myapp.service | grep ExecStart
+ls -la /usr/bin/myapp   # Or wherever the binary is
+
+# Check if systemd is killing it due to timeout
+journalctl -u myapp.service -b | grep -E "Timeout|killed|SIGTERM|SIGKILL"
+# If "start operation timed out": the service is taking too long to report ready
+# Fix: Increase TimeoutStartSec in an override:
+sudo systemctl edit myapp.service
+# Add:
+[Service]
+TimeoutStartSec=120
+
+# Check the restart policy — is it restarting too aggressively?
+systemctl show myapp.service | grep -E "Restart=|RestartSec="
+# Restart=always with RestartSec=0 means it restarts instantly — fills the journal
+# Consider: RestartSec=5 to add a 5-second delay between restarts
+```
