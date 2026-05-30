@@ -154,4 +154,35 @@ ionice -c 3 rsync -av /data/ /backup/
 
 ---
 
+## Step 4 - Measure Disk Health and Performance Baseline
+
+```bash
+# Check raw disk read speed (sequential read — measure baseline performance)
+sudo hdparm -Tt /dev/sda
+# Timing cached reads: should be > 1 GB/s (RAM speed)
+# Timing buffered disk reads: SSD should be 200–500 MB/s, HDD 80–150 MB/s
+# If significantly below baseline: disk hardware is degraded
+
+# Check disk queue depth
+cat /sys/block/sda/queue/nr_requests
+# Default is 128. Higher queue depth can help SSDs (they handle parallel I/O well)
+# Does not help HDDs (they are inherently sequential)
+
+# Check current disk scheduler
+cat /sys/block/sda/queue/scheduler
+# Options: [mq-deadline] none bfq kyber
+# For SSDs: 'none' or 'mq-deadline' are appropriate
+# For HDDs: 'bfq' (Budget Fair Queueing) provides better interactive performance
+
+# Change scheduler (immediate, resets on reboot)
+echo mq-deadline | sudo tee /sys/block/sda/queue/scheduler
+
+# Make persistent via udev rule:
+echo 'ACTION=="add|change", KERNEL=="sda", ATTR{queue/scheduler}="mq-deadline"' | \
+    sudo tee /etc/udev/rules.d/60-scheduler.rules
+```
+
+---
+
+
 
