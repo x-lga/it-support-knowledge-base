@@ -240,3 +240,11 @@ failures before they become permanent.
 
 ---
 
+## Related Articles
+
+- LNX-001: Filesystem Corruption Recovery (if boot failure is filesystem-related)
+- LNX-003: High iowait Diagnosis (slow disk I/O can cause service timeout failures)
+
+
+---
+
