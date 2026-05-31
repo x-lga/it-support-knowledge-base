@@ -118,4 +118,9 @@ error messages, log entries, or observable conditions that are diagnostic.]
 [Exact error message text that indicates this known error]
 ```
 
+**Log entries:**
+```
+[Specific log lines or patterns that appear when this error occurs]
+```
+
 
