@@ -97,3 +97,14 @@ have time to navigate to other documents.]
 
 ---
 
+## Permanent Fix Plan
+
+**Fix planned:** [Yes / No / Under evaluation]
+**Fix description:** [What the permanent fix will be - software update, config change, hardware replacement, etc.]
+**Target implementation date:** [Date or "TBD"]
+**Responsible team / person:** [Who owns the fix implementation]
+**Change record ID:** [If a change has been raised, include the ID]
+**Blockers:** [What is preventing implementation of the permanent fix]
+
+---
+
