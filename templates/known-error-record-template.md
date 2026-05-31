@@ -50,3 +50,12 @@ the workaround can be applied?]
 
 ---
 
+## Problem History
+
+**First occurrence:** [Date and incident ID if available]
+**Recurrence frequency:** [How often this typically reoccurs - daily, weekly, monthly, irregular]
+**Total occurrences to date:** [Number]
+**Incident IDs:** [List related incident IDs for pattern analysis]
+
+---
+
