@@ -87,3 +87,16 @@ criteria. Never leave the reader without a defined endpoint.]
 the L2 engineer needs. Do not just say "escalate to L2."]
 
 ---
+
+
+## Known Edge Cases
+
+[This section is mandatory. Every issue has edge cases that break the standard
+procedure. Document them here.]
+
+[Format:]
+**[Edge case name - what makes it different]:**
+[What the different situation looks like, and how the resolution differs.
+If the resolution is the same, this probably is not a separate edge case.]
+
+---
