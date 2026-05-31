@@ -71,3 +71,8 @@ identified, describe what is known and what is still unclear.]
 | Risk of fix exceeds risk of recurrence | Fix cost not yet approved | By design (accepted risk)]
 
 
+**Vendor reference / bug ID:** [Vendor case number, public CVE, or bug tracker ID if applicable]
+
+---
+
+
