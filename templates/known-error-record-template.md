@@ -113,3 +113,9 @@ have time to navigate to other documents.]
 [How engineers can recognise this known error when they encounter it - specific
 error messages, log entries, or observable conditions that are diagnostic.]
 
+**Specific error messages:**
+```
+[Exact error message text that indicates this known error]
+```
+
+
