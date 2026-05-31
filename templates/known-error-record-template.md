@@ -31,3 +31,11 @@ reducing resolution time.
 **Status:** [Open | Workaround Available | Permanent Fix Pending | Closed]
 
 ---
+
+## Problem Summary
+
+**One-sentence description:**
+[Describe the problem in plain language. This is what engineers will search for
+when they encounter this issue. Write it the way the symptom presents, not the
+way the root cause is described - engineers search by symptom, not root cause.]
+
