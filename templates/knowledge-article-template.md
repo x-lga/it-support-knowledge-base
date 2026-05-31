@@ -47,4 +47,26 @@ specific situation.]
 
 ---
 
+## Step 1 - [First Diagnostic or Preparatory Action]
+
+[Each step should have:]
+[1. A brief statement of WHY this step comes first]
+[2. The actual commands or portal clicks — fully written out, nothing omitted]
+[3. What the output means — what does "good" look like, what does "bad" look like]
+[4. What to do based on the output — which step to go to next]
+
+```[language]
+# [Explain what this code block does in a comment at the top]
+# [Every significant line should have a comment explaining it]
+[code here]
+```
+
+[If the step has a decision point - "if X then Y, if Z then W" — use a table:]
+
+| If you see | It means | Do this |
+|-----------|---------|---------|
+| [output A] | [meaning] | [action] |
+| [output B] | [meaning] | [action] |
+
+---
 
