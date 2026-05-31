@@ -123,4 +123,8 @@ error messages, log entries, or observable conditions that are diagnostic.]
 [Specific log lines or patterns that appear when this error occurs]
 ```
 
+**Monitoring alerts that fire:** [Which alerts correspond to this known error]
+
+---
+
 
