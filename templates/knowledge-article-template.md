@@ -77,3 +77,13 @@ specific situation.]
 how interesting they are to write.]
 
 ---
+
+## Step N - [Resolution or Escalation]
+
+[Every article must end with either a clear resolution or a clear escalation
+criteria. Never leave the reader without a defined endpoint.]
+
+[If escalating: provide the exact escalation package content - what information
+the L2 engineer needs. Do not just say "escalate to L2."]
+
+---
