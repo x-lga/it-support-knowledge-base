@@ -59,3 +59,11 @@ the workaround can be applied?]
 
 ---
 
+## Root Cause
+
+**Root cause identified:** [Yes / Partially / No]
+**Root cause description:**
+[Describe the technical root cause in as much detail as is known. If partially
+identified, describe what is known and what is still unclear.]
+
+
