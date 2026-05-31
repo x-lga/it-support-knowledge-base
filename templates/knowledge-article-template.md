@@ -113,3 +113,11 @@ after resolution - confirms the fix actually worked and nothing was left incompl
 
 ---
 
+## Related Articles
+
+[Links to other articles in this knowledge base that are related. Use article IDs.]
+- [ARTICLE-ID]: [Brief description of why it is related]
+
+
+---
+
