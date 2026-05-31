@@ -92,4 +92,8 @@ have time to navigate to other documents.]
 [Workaround commands or steps]
 ```
 
+**Post-workaround verification:**
+[What to check to confirm the workaround was successful.]
+
+---
 
