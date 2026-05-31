@@ -100,3 +100,16 @@ procedure. Document them here.]
 If the resolution is the same, this probably is not a separate edge case.]
 
 ---
+
+## Post-Resolution Checklist
+
+[Optional but recommended for P1/P2 articles. A checklist of things to verify
+after resolution - confirms the fix actually worked and nothing was left incomplete.]
+
+- [ ] [Verification step 1]
+- [ ] [Verification step 2]
+- [ ] [User notified / confirmed working]
+- [ ] [Ticket updated with root cause and resolution notes]
+
+---
+
