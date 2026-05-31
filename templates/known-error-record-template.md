@@ -39,3 +39,8 @@ reducing resolution time.
 when they encounter this issue. Write it the way the symptom presents, not the
 way the root cause is described - engineers search by symptom, not root cause.]
 
+**Affected systems:**
+[List the specific systems, services, or components affected. Include version
+numbers where relevant - the same issue may affect v1.x but not v2.x.]
+
+
