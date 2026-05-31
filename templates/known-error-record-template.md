@@ -66,4 +66,8 @@ the workaround can be applied?]
 [Describe the technical root cause in as much detail as is known. If partially
 identified, describe what is known and what is still unclear.]
 
+**Why a permanent fix has not been implemented:**
+[One of: Vendor patch pending | Change window not yet available | No vendor fix exists
+| Risk of fix exceeds risk of recurrence | Fix cost not yet approved | By design (accepted risk)]
+
 
