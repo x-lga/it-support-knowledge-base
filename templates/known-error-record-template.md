@@ -43,4 +43,10 @@ way the root cause is described - engineers search by symptom, not root cause.]
 [List the specific systems, services, or components affected. Include version
 numbers where relevant - the same issue may affect v1.x but not v2.x.]
 
+**Impact when triggered:**
+[Describe the business or operational impact. What does the user experience?
+What service is degraded or unavailable? How long does the impact last before
+the workaround can be applied?]
+
+---
 
