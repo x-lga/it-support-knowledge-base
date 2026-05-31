@@ -108,3 +108,8 @@ have time to navigate to other documents.]
 
 ---
 
+## Detection Indicators
+
+[How engineers can recognise this known error when they encounter it - specific
+error messages, log entries, or observable conditions that are diagnostic.]
+
