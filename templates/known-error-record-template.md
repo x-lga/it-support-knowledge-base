@@ -11,3 +11,13 @@ In ITIL 4, Known Error Records live in the Known Error Database (KEDB) and are
 referenced during Incident Management when the same issue recurs — the engineer
 picks up the workaround from the KER and applies it without re-investigating,
 reducing resolution time.
+
+
+**When to create a Known Error Record:**
+- The root cause of a recurring incident has been identified
+- A permanent fix exists but cannot be implemented yet (awaiting change window,
+  vendor patch, budget approval, or risk sign-off)
+- No permanent fix is available (vendor limitation, end-of-life component, by design)
+- The workaround reliably restores service but does not prevent recurrence
+
+---
