@@ -70,3 +70,10 @@ specific situation.]
 
 ---
 
+## Step 2 - [Second Action]
+
+[Follow the same pattern. Number steps sequentially.]
+[Steps should be in the order they would actually be performed - not in order of
+how interesting they are to write.]
+
+---
