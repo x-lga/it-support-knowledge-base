@@ -75,4 +75,21 @@ identified, describe what is known and what is still unclear.]
 
 ---
 
+## Workaround
+
+**Workaround available:** [Yes / No / Partial]
+**Workaround restores full service:** [Yes / No - if No, describe what is not restored]
+**Workaround duration:** [How long the workaround holds before the issue recurs]
+
+**Workaround procedure:**
+
+[Write the workaround steps in the same level of detail as a knowledge article.
+Do not refer to another document - duplicate the steps here so the KER is
+self-contained. Engineers pick up a KER during an active incident and do not
+have time to navigate to other documents.]
+
+```[language]
+[Workaround commands or steps]
+```
+
 
