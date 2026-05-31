@@ -127,4 +127,14 @@ error messages, log entries, or observable conditions that are diagnostic.]
 
 ---
 
+## Escalation Notes
+
+[Any special handling instructions for incidents caused by this known error.
+For example: "Do not escalate to the vendor - they have acknowledged this as a
+known bug and a fix will be included in the next release." Or: "If the workaround
+fails to restore service within 15 minutes, escalate to L2 Security immediately."]
+
+
+---
+
 
