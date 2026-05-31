@@ -21,3 +21,13 @@ reducing resolution time.
 - The workaround reliably restores service but does not prevent recurrence
 
 ---
+
+# [KER-ID] - Known Error Record: [Brief Problem Title]
+
+**KER ID:** [KER-YYYYMMDD-NNN - e.g., KER-20260715-001]
+**Created:** [YYYY-MM-DD]
+**Created by:** [Name]
+**Last updated:** [YYYY-MM-DD]
+**Status:** [Open | Workaround Available | Permanent Fix Pending | Closed]
+
+---
