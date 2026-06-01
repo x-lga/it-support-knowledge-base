@@ -122,6 +122,12 @@ This is the most valuable part of the PIR and must be written honestly.]
 - [Item 1: e.g., The initial 20 minutes was spent investigating the database rather than the network - the correct layer was not identified quickly]
 - [Item 2: e.g., Communications to affected users were not sent until 40 minutes after impact began - users were unaware and flooding the help desk with calls]
 
+**Were the runbooks and documentation used?** [Yes / No / Partially]
+**If No or Partially - why?** [Document what was missing or inadequate]
+
+---
+
+
 
 
 
