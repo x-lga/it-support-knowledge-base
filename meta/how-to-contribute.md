@@ -17,3 +17,19 @@ documentation is the difference between a team that improves and a team that
 stays at the same capability level.
 
 ---
+
+## The Contribution Process
+
+### Step 1 - Identify the gap
+
+A gap exists when:
+- You resolved a ticket using knowledge that is not documented here
+- You found an article that is incomplete, incorrect, or missing an edge case
+- A recurring issue has no article (check the article ID list first)
+- A template exists but no article was created from it after a PIR
+
+Do not create an article that is already covered adequately elsewhere. Check the
+article list first and search for key terms.
+
+---
+
