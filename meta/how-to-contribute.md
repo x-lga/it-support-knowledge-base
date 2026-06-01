@@ -143,6 +143,21 @@ before removing it or flag it in the pull request description.
 
 ---
 
+## What Not to Contribute
+
+**Do not contribute:**
+- Articles that reproduce official documentation verbatim - link to it instead
+- Articles about features that are not yet deployed in this environment
+- "How to" guides for tasks that have never been a support ticket (no demand)
+- Articles that require specialised tools not available to L1/L2 engineers
+- Opinion pieces or best practice guides without a specific problem context
+
+The knowledge base exists to help engineers resolve real tickets faster. Every
+article should be traceable to a real ticket type or incident that has occurred.
+
+
+---
+
 
 
 
