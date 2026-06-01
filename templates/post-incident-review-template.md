@@ -156,6 +156,22 @@ knowledge.]
 
 ---
 
+## Lessons Learned
+
+[2–5 sentences summarising the most important lessons from this incident. Written
+at a level that is useful for engineers who read this PIR in the future but were
+not involved in the incident. These should generalise beyond the specific incident
+to principles or patterns that have broad applicability.]
+
+[Example: "This incident demonstrated that low-risk changes to network security
+rules require the same level of peer review as high-risk changes - the classification
+of a change as low-risk should be based on the blast radius if it is incorrect,
+not on the apparent simplicity of the change itself."]
+
+
+---
+
+
 
 
 
