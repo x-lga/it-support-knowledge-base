@@ -83,6 +83,35 @@ Before submitting, verify the article meets the standards in
 
 ---
 
+### Step 5 - Submit via pull request
+
+```bash
+# Clone the repo (if not already cloned)
+git clone https://github.com/YOUR-USERNAME/it-support-knowledge-base.git
+cd it-support-knowledge-base
+
+# Create a branch for your article
+git checkout -b add-win-006-appcrash-on-login
+
+# Add the article
+cp templates/knowledge-article-template.md windows/win-006-appcrash-on-login.md
+# Edit the file
+git add windows/win-006-appcrash-on-login.md
+git commit -m "Add WIN-006: Application crash on login — AppCompatFlags registry fix"
+
+# Push and open a pull request
+git push origin add-win-006-appcrash-on-login
+```
+
+Pull request description must include:
+- The article ID and title
+- What ticket type or incident prompted the article
+- Whether the commands were tested and on which OS/version
+- Any sections that are incomplete and why
+
+---
+
+
 
 
 
