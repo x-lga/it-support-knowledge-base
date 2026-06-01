@@ -84,4 +84,13 @@ blocked port 1433 outbound from the application subnet, preventing the applicati
 from reaching the SQL server" is a root cause.]
 
 
+**Contributing factors:**
+[Conditions that made the incident worse, harder to detect, or harder to resolve.
+Not the same as the root cause — these are things that amplified the impact.]
+
+- [Factor 1: e.g., Monitoring alert had a 15-minute detection delay - problem existed for 15 minutes before alert fired]
+- [Factor 2: e.g., Runbook for this failure scenario did not exist - engineer had to investigate from scratch]
+- [Factor 3: e.g., Change was deployed on a Friday afternoon - reduced availability of senior engineers for escalation]
+
+
 
