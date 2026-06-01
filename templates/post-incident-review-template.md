@@ -36,3 +36,19 @@ fewer PIRs and worse systems.
 
 ---
 
+## Incident Summary
+
+**One-sentence description:**
+[What happened, in plain language. Written for an audience that was not involved.]
+
+**Impact:**
+[Who and what was affected. Number of users, services down, data at risk, financial
+or reputational impact. Duration of impact from first detection to full restoration.]
+
+**Severity at time of incident:** [P1 / P2]
+**Duration of impact:** [HH:MM from first detection to service restoration]
+**Was SLA/RTO met?** [Yes / No - if No: by how much was it missed?]
+
+---
+
+
