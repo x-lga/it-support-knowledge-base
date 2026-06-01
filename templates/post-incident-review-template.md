@@ -51,4 +51,29 @@ or reputational impact. Duration of impact from first detection to full restorat
 
 ---
 
+## Timeline
+
+[A precise, time-ordered account of events. Include all significant actions —
+detection, escalations, decisions, failed attempts, successful resolution steps,
+communications sent. Times should be in UTC or a consistently stated timezone.]
+
+| Time (UTC) | Event |
+|-----------|-------|
+| HH:MM | [First indication of the problem — monitoring alert, user report, etc.] |
+| HH:MM | [First engineer notified / incident declared] |
+| HH:MM | [Initial diagnosis attempted] |
+| HH:MM | [Escalation to L2 if applicable] |
+| HH:MM | [Root cause identified] |
+| HH:MM | [Fix or workaround applied] |
+| HH:MM | [Service restored] |
+| HH:MM | [Incident closed] |
+| HH:MM | [User / stakeholder notification sent] |
+
+**Total time from first detection to resolution:** [HH:MM]
+**Time from root cause identification to resolution:** [HH:MM]
+**Escalation lag (time from impact start to L2 notification):** [HH:MM]
+
+---
+
+
 
