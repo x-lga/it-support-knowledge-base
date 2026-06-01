@@ -127,6 +127,23 @@ This is the most valuable part of the PIR and must be written honestly.]
 
 ---
 
+## Action Items
+
+[Every PIR must produce action items with owners and due dates. A PIR with no
+action items is either a perfect response (extremely rare) or an incomplete review.]
+
+| # | Action | Owner | Due Date | Priority | Status |
+|---|--------|-------|----------|---------|--------|
+| 1 | [What must be done] | [Name] | [YYYY-MM-DD] | [High/Med/Low] | Open |
+| 2 | [e.g., Write runbook for this failure scenario] | [Name] | [Date] | High | Open |
+| 3 | [e.g., Reduce monitoring alert threshold from 100% to 30% packet loss] | [Name] | [Date] | High | Open |
+| 4 | [e.g., Add firewall rule changes to peer review requirement regardless of risk classification] | [Name] | [Date] | Medium | Open |
+
+**Action item follow-up:** [Who is responsible for ensuring action items are completed on time?]
+
+---
+
+
 
 
 
