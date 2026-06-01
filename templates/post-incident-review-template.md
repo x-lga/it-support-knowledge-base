@@ -103,5 +103,18 @@ Not the same as the root cause — these are things that amplified the impact.]
 
 ---
 
+## Response Assessment
+
+**What went well:**
+[Things the team did effectively during the incident. Be specific and genuine —
+not "everyone worked hard." Examples: "The decision to revert the change rather
+than investigate further reduced resolution time by an estimated 45 minutes."
+"The on-call engineer's familiarity with the network topology enabled rapid
+identification of the affected subnet."]
+
+- [Item 1]
+- [Item 2]
+
+
 
 
