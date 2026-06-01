@@ -143,6 +143,19 @@ action items is either a perfect response (extremely rare) or an incomplete revi
 
 ---
 
+## Knowledge Base Updates Required
+
+[List any knowledge base articles that should be created or updated as a result
+of this incident. This is where incident knowledge becomes permanent institutional
+knowledge.]
+
+| Article | Action Required | Assigned To | Due Date |
+|---------|----------------|------------|---------|
+| [e.g., NET-004 - Azure Firewall Rule Change Validation] | Create new article | [Name] | [Date] |
+| [e.g., AZ-001 - VM Boot Failure Decision Tree] | Update to include this failure mode | [Name] | [Date] |
+
+---
+
 
 
 
