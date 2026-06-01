@@ -115,6 +115,13 @@ identification of the affected subnet."]
 - [Item 1]
 - [Item 2]
 
+**What could have gone better:**
+[Honest assessment of what slowed the response or made the incident worse.
+This is the most valuable part of the PIR and must be written honestly.]
+
+- [Item 1: e.g., The initial 20 minutes was spent investigating the database rather than the network - the correct layer was not identified quickly]
+- [Item 2: e.g., Communications to affected users were not sent until 40 minutes after impact began - users were unaware and flooding the help desk with calls]
+
 
 
 
