@@ -111,6 +111,22 @@ Pull request description must include:
 
 ---
 
+### Step 6 - Review process
+
+Articles submitted via pull request are reviewed by at least one other engineer
+before merging. The reviewer checks:
+- Technical accuracy of the commands and procedures
+- Completeness: are the Known Edge Cases realistic?
+- Clarity: could a capable engineer follow this at 2am without asking questions?
+- No existing article already covers this topic adequately
+
+Review is not about writing style. An article with imperfect grammar that is
+technically precise and complete is better than a beautifully written article
+that is technically vague.
+
+---
+
+
 
 
 
