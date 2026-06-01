@@ -75,5 +75,13 @@ communications sent. Times should be in UTC or a consistently stated timezone.]
 
 ---
 
+## Root Cause Analysis
+
+**Root cause:**
+[The technical or process cause of the incident. Be specific - "a configuration
+change" is not a root cause. "A firewall rule added during change CHG-2026-0714
+blocked port 1433 outbound from the application subnet, preventing the application
+from reaching the SQL server" is a root cause.]
+
 
 
