@@ -68,5 +68,21 @@ publish an article with `[placeholder]` text remaining.
 
 ---
 
+### Step 4 - Meet the article quality standards
+
+Before submitting, verify the article meets the standards in
+`meta/article-quality-standards.md`. Specifically:
+
+- Every command block is complete and runnable as written
+- Every command has a comment explaining what it does and what the output means
+- The article has at least one "Known Edge Cases" section
+- The article does not simply repeat information from official documentation
+  — it adds context about what can go wrong, what things get confused with,
+  or what the documentation does not mention
+- The article was tested: you ran the commands and they produced the stated output
+
+---
+
+
 
 
