@@ -24,3 +24,15 @@ fewer PIRs and worse systems.
 **Timeline:** PIR should be completed within 5 business days of the incident closure.
 
 ---
+
+# PIR - [Brief Incident Title]
+
+**PIR ID:** [PIR-YYYYMMDD-NNN]
+**Incident ID:** [INC-YYYYMMDD-NNN]
+**Date of incident:** [YYYY-MM-DD HH:MM]
+**Date PIR completed:** [YYYY-MM-DD]
+**PIR facilitator:** [Name - should be someone not directly involved in the incident]
+**Attendees:** [List all participants - include all engineers who worked the incident]
+
+---
+
