@@ -93,4 +93,15 @@ Not the same as the root cause — these are things that amplified the impact.]
 - [Factor 3: e.g., Change was deployed on a Friday afternoon - reduced availability of senior engineers for escalation]
 
 
+**Why did existing safeguards not prevent this?**
+[For each safeguard that should have caught this - why did it not?]
+
+| Safeguard | Why it did not prevent this incident |
+|-----------|-------------------------------------|
+| [e.g., Change review process] | [e.g., The firewall rule change was classified as low-risk and did not require a peer review] |
+| [e.g., Monitoring alert] | [e.g., The monitoring threshold was set too high - triggered only at 100% packet loss, not at the partial loss that occurred] |
+
+---
+
+
 
