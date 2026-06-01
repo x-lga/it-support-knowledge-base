@@ -126,6 +126,24 @@ that is technically vague.
 
 ---
 
+## Updating Existing Articles
+
+When you discover that an existing article is incomplete, incorrect, or missing
+an edge case you encountered:
+
+1. Edit the article directly in a branch
+2. Update the `Last verified` date to today
+3. Add your name to any new section you wrote
+4. Commit with a message that describes the specific change:
+   `"WIN-002: Add edge case for WMI failure after Windows 11 23H2 update"`
+
+Never delete content from an existing article without documenting why - someone
+wrote it for a reason. If you believe a section is incorrect, comment on why
+before removing it or flag it in the pull request description.
+
+---
+
+
 
 
 
