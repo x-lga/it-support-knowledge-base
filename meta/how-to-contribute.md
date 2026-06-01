@@ -33,3 +33,14 @@ article list first and search for key terms.
 
 ---
 
+### Step 2 - Choose the correct article type
+
+| Situation | Article Type | Template to Use |
+|-----------|-------------|----------------|
+| Resolved a specific type of ticket | Knowledge Article | knowledge-article-template.md |
+| Root cause found, permanent fix pending | Known Error Record | known-error-record-template.md |
+| Completed a P1 or significant P2 incident review | Post-Incident Review | post-incident-review-template.md |
+
+---
+
+
