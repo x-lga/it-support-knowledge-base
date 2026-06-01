@@ -43,4 +43,30 @@ article list first and search for key terms.
 
 ---
 
+### Step 3 - Write the article
+
+Copy the appropriate template from the `templates/` directory.
+Rename it using the correct article ID format:
+
+```
+[CATEGORY]-[NNN]-[brief-slug].md
+
+Examples:
+  windows/win-006-appcrash-on-login.md
+  azure/az-005-function-app-cold-start.md
+  linux/lnx-004-cron-job-not-running.md
+  networking/net-004-spanning-tree-loop.md
+  security/sec-004-pass-the-hash-detection.md
+  microsoft-365/m365-005-teams-guest-access.md
+```
+
+The NNN number continues from the highest existing article in that category.
+Check the existing files before assigning a number.
+
+Fill in every section of the template. Delete template instructions. Do not
+publish an article with `[placeholder]` text remaining.
+
+---
+
+
 
