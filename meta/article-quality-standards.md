@@ -48,3 +48,7 @@ Get-ADUser $Username | Select-Object DisplayName, SamAccountName, Enabled, Locke
 For every command where the output is not immediately obvious, the article must
 explain what the expected output looks like for both healthy and unhealthy states,
 and what the engineer should do based on each output.
+
+**Why:** Engineers at 2am do not know what a healthy output looks like if they
+have never run the command before. An article that shows the command but not
+the expected output provides half the information needed.
