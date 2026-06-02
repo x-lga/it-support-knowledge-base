@@ -57,3 +57,17 @@ the expected output provides half the information needed.
 output to expect and what it means?
 
 ---
+
+## Standard 3 - The Article Adds Context Not Available in Official Documentation
+
+**What this means:**
+The article must contain at least one of the following that is not in the
+official vendor documentation:
+- An explanation of why a symptom is frequently misdiagnosed
+- A table or decision framework for distinguishing between multiple causes
+  that produce the same symptom
+- A "Known Edge Cases" section documenting behaviour that official documentation
+  does not mention
+- An honest description of when the standard procedure does NOT work and why
+- The information that was actually needed to resolve a real ticket that the
+  documentation alone did not provide
