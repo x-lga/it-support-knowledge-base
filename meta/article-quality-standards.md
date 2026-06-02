@@ -17,3 +17,8 @@ Every command block in an article must be complete as written. An engineer must
 be able to copy the command, replace only the explicitly marked variables
 (formatted as `[REPLACE THIS]`), and run it without needing to figure out
 missing arguments, missing import statements, or missing prerequisite steps.
+
+**What this does NOT mean:**
+Commands do not need to be universal. It is fine for a command to work only on
+Ubuntu 22.04, or only on Windows Server 2022, or only on Azure subscriptions.
+The article must state this clearly at the top.
