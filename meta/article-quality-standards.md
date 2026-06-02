@@ -103,3 +103,16 @@ technical documentation. They must, however, be technically accurate.
 Note: This procedure may not work in all environments.
 ```
 This is not an edge case. It is a disclaimer.
+
+**Passing edge case:**
+```
+Edge case - Profile corruption on machines with roaming profiles:
+If the user has a roaming profile configured (visible in GPMC under User
+Configuration → Folder Redirection), the corrupted profile may be the local
+cache rather than the authoritative server copy. Deleting the local profile
+registry entry (Step 3) will not fix the issue - on next login, Windows will
+re-download the corrupt server copy and the problem will recur. The server-side
+profile must be cleared from the file server, not the local machine.
+```
+
+---
