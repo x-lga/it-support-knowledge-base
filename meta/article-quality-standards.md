@@ -175,5 +175,8 @@ is essential to complete the current resolution is not acceptable.
 Every sentence in an article must say something specific. Vague language
 produces vague outcomes.
 
+**Vague:** "Check the network settings."
+
+
 
 
