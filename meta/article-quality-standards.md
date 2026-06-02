@@ -176,9 +176,11 @@ Every sentence in an article must say something specific. Vague language
 produces vague outcomes.
 
 **Vague:** "Check the network settings."
-
 **Precise:** "Run `ipconfig /all` and confirm the IPv4 address is in the
 expected range (10.10.10.x) and the Default Gateway shows 10.10.10.1."
+
+
+**Vague:** "Ensure the service is running."
 
 
 
