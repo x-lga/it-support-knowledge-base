@@ -93,3 +93,7 @@ procedure in the article does not apply or produces a different result. Each edg
 case must include: what the different situation looks like, why it is different,
 and how the resolution differs from the standard procedure.
 
+**What this does NOT mean:**
+Edge cases do not need to have occurred to the article author personally. They
+can come from other engineers, from incident reviews, or from careful reading of
+technical documentation. They must, however, be technically accurate.
