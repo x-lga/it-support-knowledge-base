@@ -78,3 +78,10 @@ to contain the understanding that takes months of hands-on experience to build â
 the kind of knowledge that gets transferred verbally between senior and junior
 engineers but is never written down.
 
+
+**Test:** If you removed everything from the article that is also in the official
+documentation, would anything remain? If not: the article is a documentation
+summary, not a knowledge base contribution.
+
+---
+
