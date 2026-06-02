@@ -134,3 +134,21 @@ reduce the urgency of the impact. The Severity field determines how quickly an
 engineer picks up the ticket, not how long the fix takes.
 
 ---
+
+## Standard 6 - The "Last Verified" Date Is Maintained
+
+Every article has a `Last verified` date. This date must be updated any time
+the article's commands are confirmed to still work correctly on the current
+version of the relevant system.
+
+Articles with a `Last verified` date more than 12 months old must be reviewed
+before use and flagged for re-verification. They may still be correct — but
+the engineer using them must verify this before trusting them.
+
+An article that has never been re-verified since writing is trustworthy on the
+day it was written. An article that was written 3 years ago and never updated
+may be actively misleading - operating system versions change, APIs change,
+portal navigation changes.
+
+---
+
