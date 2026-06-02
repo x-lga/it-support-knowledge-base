@@ -181,6 +181,8 @@ expected range (10.10.10.x) and the Default Gateway shows 10.10.10.1."
 
 
 **Vague:** "Ensure the service is running."
+**Precise:** "Run `Get-Service -Name Spooler | Select-Object Status` — the
+Status must show Running. If it shows Stopped: run `Start-Service Spooler`."
 
 
 
