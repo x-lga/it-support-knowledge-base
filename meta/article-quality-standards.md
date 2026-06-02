@@ -41,3 +41,10 @@ Get-ADUser $Username | Select-Object DisplayName, SamAccountName, Enabled, Locke
 ```
 
 ---
+
+## Standard 2 - Every Command Must Have a Comment Explaining the Output
+
+**What this means:**
+For every command where the output is not immediately obvious, the article must
+explain what the expected output looks like for both healthy and unhealthy states,
+and what the engineer should do based on each output.
