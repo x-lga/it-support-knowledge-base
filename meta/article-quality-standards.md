@@ -9,3 +9,11 @@ inaccurate article creates false confidence, sends engineers down the wrong path
 and takes time to undo. When in doubt: either meet the standard or do not publish.
 
 ---
+
+## Standard 1 - Every Command Must Be Complete and Runnable
+
+**What this means:**
+Every command block in an article must be complete as written. An engineer must
+be able to copy the command, replace only the explicitly marked variables
+(formatted as `[REPLACE THIS]`), and run it without needing to figure out
+missing arguments, missing import statements, or missing prerequisite steps.
