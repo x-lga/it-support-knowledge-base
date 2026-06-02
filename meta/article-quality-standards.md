@@ -52,3 +52,8 @@ and what the engineer should do based on each output.
 **Why:** Engineers at 2am do not know what a healthy output looks like if they
 have never run the command before. An article that shows the command but not
 the expected output provides half the information needed.
+
+**Test:** For every command in the article: does the article tell the reader what
+output to expect and what it means?
+
+---
