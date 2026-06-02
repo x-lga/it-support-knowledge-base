@@ -116,3 +116,21 @@ profile must be cleared from the file server, not the local machine.
 ```
 
 ---
+
+## Standard 5 - Severity Ratings Are Accurate
+
+Every article must have an accurate severity rating that reflects the business
+impact when this issue occurs, not the technical complexity of the fix.
+
+| Severity | Criteria |
+|---------|---------|
+| P1 | Complete service unavailability affecting multiple users, or data loss risk |
+| P2 | Significant service degradation, single critical user affected, or security risk |
+| P3 | Non-critical functionality impaired, workaround available |
+| P4 | Minor issue, no service impact, informational |
+
+Do not rate a P1 issue as P3 because the fix is simple. A simple fix does not
+reduce the urgency of the impact. The Severity field determines how quickly an
+engineer picks up the ticket, not how long the fix takes.
+
+---
