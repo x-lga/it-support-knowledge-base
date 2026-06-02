@@ -26,3 +26,9 @@ The article must state this clearly at the top.
 **Test:** Read every command block and ask: could an engineer who has never seen
 this command before run it successfully from this article alone? If not: the
 article fails this standard.
+
+**Failing example:**
+```
+Get-ADUser $Username | Select-Object *
+```
+This fails because `$Username` is not defined anywhere in the article.
