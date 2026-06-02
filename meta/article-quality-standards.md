@@ -163,4 +163,12 @@ If the resolution of an issue genuinely requires information from multiple
 articles: either consolidate them into one article, or the article's scope
 is too narrow and should be expanded.
 
+**Exception:** The "Related Articles" section may reference articles for
+context or for follow-on actions that are outside the scope of the current
+issue. This is encouraged. Referencing another article for information that
+is essential to complete the current resolution is not acceptable.
+
+---
+
+
 
