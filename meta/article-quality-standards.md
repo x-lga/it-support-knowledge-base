@@ -22,3 +22,7 @@ missing arguments, missing import statements, or missing prerequisite steps.
 Commands do not need to be universal. It is fine for a command to work only on
 Ubuntu 22.04, or only on Windows Server 2022, or only on Azure subscriptions.
 The article must state this clearly at the top.
+
+**Test:** Read every command block and ask: could an engineer who has never seen
+this command before run it successfully from this article alone? If not: the
+article fails this standard.
