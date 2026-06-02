@@ -32,3 +32,12 @@ article fails this standard.
 Get-ADUser $Username | Select-Object *
 ```
 This fails because `$Username` is not defined anywhere in the article.
+
+**Passing example:**
+```powershell
+# Replace [USERNAME] with the SamAccountName of the affected user
+$Username = "[USERNAME]"   # e.g., jsmith
+Get-ADUser $Username | Select-Object DisplayName, SamAccountName, Enabled, LockedOut
+```
+
+---
