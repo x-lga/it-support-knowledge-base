@@ -71,3 +71,10 @@ official vendor documentation:
 - An honest description of when the standard procedure does NOT work and why
 - The information that was actually needed to resolve a real ticket that the
   documentation alone did not provide
+
+**What this does NOT mean:**
+The article does not need to contain secret or proprietary information. It needs
+to contain the understanding that takes months of hands-on experience to build —
+the kind of knowledge that gets transferred verbally between senior and junior
+engineers but is never written down.
+
