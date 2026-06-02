@@ -85,3 +85,11 @@ summary, not a knowledge base contribution.
 
 ---
 
+## Standard 4 - The Known Edge Cases Section Is Genuine
+
+**What this means:**
+The Known Edge Cases section must document real situations where the standard
+procedure in the article does not apply or produces a different result. Each edge
+case must include: what the different situation looks like, why it is different,
+and how the resolution differs from the standard procedure.
+
