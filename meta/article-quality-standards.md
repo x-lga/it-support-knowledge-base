@@ -170,5 +170,10 @@ is essential to complete the current resolution is not acceptable.
 
 ---
 
+## Standard 8 - Language Is Precise, Not Vague
+
+Every sentence in an article must say something specific. Vague language
+produces vague outcomes.
+
 
 
