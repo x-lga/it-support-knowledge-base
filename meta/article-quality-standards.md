@@ -97,3 +97,9 @@ and how the resolution differs from the standard procedure.
 Edge cases do not need to have occurred to the article author personally. They
 can come from other engineers, from incident reviews, or from careful reading of
 technical documentation. They must, however, be technically accurate.
+
+**Failing edge case:**
+```
+Note: This procedure may not work in all environments.
+```
+This is not an edge case. It is a disclaimer.
