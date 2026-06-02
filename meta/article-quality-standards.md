@@ -186,6 +186,10 @@ Status must show Running. If it shows Stopped: run `Start-Service Spooler`."
 
 
 **Vague:** "This may cause issues."
+**Precise:** "This will prevent any new DHCP leases from being issued. Existing
+devices will retain their current leases until expiry."
+
+---
 
 
 
