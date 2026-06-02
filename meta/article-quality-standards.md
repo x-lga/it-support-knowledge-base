@@ -152,3 +152,15 @@ portal navigation changes.
 
 ---
 
+## Standard 7 - The Article Is Self-Contained
+
+An article must be usable on its own. It may reference other articles for
+related information, but the engineer must be able to complete the full
+diagnostic and resolution procedure described in the article without needing
+to open another article.
+
+If the resolution of an issue genuinely requires information from multiple
+articles: either consolidate them into one article, or the article's scope
+is too narrow and should be expanded.
+
+
